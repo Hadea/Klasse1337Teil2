@@ -1,0 +1,35 @@
+﻿<Page x:Class="ComponentsDemo.StackpanelDemoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComponentsDemo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600">
+
+    <StackPanel>
+        <!--Stapelt Inhaltselemente
+        Orientation stellt die Stapelrichtung ein
+        serienmässig untereinander "Vertical", alternativ "Horizontal"
+        Die elemente behalten ihre Breite (meisst *) bekommen aber
+        eine neue Höhe (meisst Auto)
+        Auto = Minimalgrösse
+        * = Maximalgrösse
+        -->
+        <Label Content="Oberstes Element" />
+        <Label Content="Stackpanel Demo" />
+        <Button Content="Stackpanel Demo" HorizontalAlignment="Left"/>
+        <Label Content="Stackpanel Demo" Background="Gray" Width="200"/>
+        <Label Content="Stackpanel Demo" FontSize="50" />
+        <StackPanel Orientation="Horizontal">
+            <Rectangle Fill="Blue" Height="10" Width="10"/>
+            <Rectangle Fill="Red" Height="10" Width="10"/>
+            <Rectangle Fill="Blue" Height="10" Width="10"/>
+            <Rectangle Fill="Red" Height="10" Width="10"/>
+            <Rectangle Fill="Blue" Height="10" Width="10"/>
+            <Rectangle Fill="Red" Height="10" Width="10"/>
+            <Rectangle Fill="Blue" Height="10" Width="10"/>
+            <Rectangle Fill="Red" Height="10" Width="10"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

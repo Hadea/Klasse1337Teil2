@@ -1,0 +1,46 @@
+﻿<Page x:Class="ComponentsDemo.GridDemoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComponentsDemo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="400"
+      Title="GridDemoPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" /> <!--fester pixel wert-->
+            <ColumnDefinition Width="50" /> <!--fester pixel wert-->
+            <ColumnDefinition Width="50" /> <!--fester pixel wert-->
+            <ColumnDefinition Width="Auto" /> <!--so klein wie es der Inhalt erlaubt-->
+            <ColumnDefinition Width="*" /> <!--so gross wie möglich-->
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Label Content="Label1" /> <!-- positioniert an col 0 und row 0 durch standardwert int-->
+        <Label Content="XXXXX" Foreground="Red" /> <!-- positioniert auch an 0 0 und überlagert. Letzter in der Liste wird als letztes gezeichnet und überschreibt vorhergehende visuell -->
+        <Label Content="Label3" Grid.Row="1" Grid.Column="1" /> <!--Positionierungen werden wie bei Arrays ab 0 gezählt-->
+        <Label Content="Verdammt viel text der nicht passt"
+               Grid.Row="2"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"/> <!-- besagt wieviele Zellen verwendet werden können -->
+        <StackPanel Background="LightGray"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Grid.RowSpan="3">
+            <!--Stackpanel bekommt einen Bereich im Grid zugewiesen und nutzt diesen maximal aus-->
+            <Label Content="Stacked Label"/>
+            <Label Content="Stacked Label"/>
+            <Label Content="Stacked Label"/>
+        </StackPanel>
+    </Grid>
+</Page>
