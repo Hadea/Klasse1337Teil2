@@ -44,5 +44,10 @@ namespace ComponentsDemo
         {
             frmContent.Navigate(new TextBoxDemoPage());
         }
+
+        private void btnTextBlock_Click(object sender, RoutedEventArgs e)
+        {
+            frmContent.Navigate(new TextBlockDemoPage());
+        }
     }
 }
