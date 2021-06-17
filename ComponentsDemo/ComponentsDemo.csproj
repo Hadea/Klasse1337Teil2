@@ -6,4 +6,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="checker.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="checker.bmp" />
+  </ItemGroup>
+
 </Project>

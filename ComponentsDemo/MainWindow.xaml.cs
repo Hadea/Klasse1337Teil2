@@ -49,5 +49,10 @@ namespace ComponentsDemo
         {
             frmContent.Navigate(new TextBlockDemoPage());
         }
+
+        private void btnImage_Click(object sender, RoutedEventArgs e)
+        {
+            frmContent.Navigate(new ImageDemoPage());
+        }
     }
 }
