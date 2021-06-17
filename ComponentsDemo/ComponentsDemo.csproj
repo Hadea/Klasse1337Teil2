@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="checker.bmp" />
+    <Resource Include="Images\checker.bmp" />
   </ItemGroup>
 
 </Project>

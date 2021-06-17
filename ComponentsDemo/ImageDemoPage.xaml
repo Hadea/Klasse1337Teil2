@@ -22,17 +22,17 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <TextBlock TextWrapping="Wrap" Padding="5" FontSize="18" Text="Fill = Image wird vom bild gefüllt ohne auf das seitenverhältnis zu achten"/>
-        <Image Source="/checker.bmp" Grid.Column="1" Stretch="Fill" />
+        <Image Source="/Images/checker.bmp" Grid.Column="1" Stretch="Fill" />
         <TextBlock TextWrapping="Wrap" Padding="5" FontSize="18" Grid.Row="1" Text="none = originalgrösse"/>
-        <Image Source="/checker.bmp" Stretch="None" Grid.Row="1" Grid.Column="1" />
+        <Image Source="/Images/checker.bmp" Stretch="None" Grid.Row="1" Grid.Column="1" />
         <TextBlock TextWrapping="Wrap" Padding="5" FontSize="18" Grid.Row="2" Text="uniform = bild vollständig im Image, seitenverhältnis eingehalten"/>
-        <Image Source="/checker.bmp" Stretch="Uniform" Grid.Row="2" Grid.Column="1" />
+        <Image Source="/Images/checker.bmp" Stretch="Uniform" Grid.Row="2" Grid.Column="1" />
         <TextBlock TextWrapping="Wrap" Padding="5" FontSize="18" Grid.Row="3" Text="uniformToFill = Bild ist so gross das es das Image abdeckt, seitenverhältnis bleibt erhalten"/>
-        <Image Source="/checker.bmp" Stretch="UniformToFill" Grid.Row="3" Grid.Column="1" />
+        <Image Source="/Images/checker.bmp" Stretch="UniformToFill" Grid.Row="3" Grid.Column="1" />
 
         <Button Grid.Column="1" Grid.Row="5" Click="btnVisibilityChange_Click">
             <StackPanel Orientation="Horizontal">
-                <Image Width="16" Height="16" x:Name="imgVisibility" Source="/checker.bmp"/>
+                <Image Width="16" Height="16" x:Name="imgVisibility" Source="/Images/checker.bmp"/>
                 <TextBlock x:Name="tblVisibility" Width="70" Padding="5" Text="nix" Background="Gray" />
             </StackPanel>
         </Button>
