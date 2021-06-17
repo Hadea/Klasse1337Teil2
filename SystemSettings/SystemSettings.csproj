@@ -6,9 +6,6 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="31e2147f9e32ed7c.jpg" />
-    <None Remove="checker.bmp" />
-  </ItemGroup>
+
 
 </Project>
