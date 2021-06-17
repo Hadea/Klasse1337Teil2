@@ -25,6 +25,7 @@ namespace ComponentsDemo
         public ButtonDemoPage()
         {
             InitializeComponent();
+            lblHoverInfo.Content = "stuff";
         }
 
         private void btnFirstButton_Click(object sender, RoutedEventArgs e)

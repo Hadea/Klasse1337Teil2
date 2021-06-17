@@ -54,5 +54,10 @@ namespace ComponentsDemo
         {
             frmContent.Navigate(new ImageDemoPage());
         }
+
+        private void btnSlider_Click(object sender, RoutedEventArgs e)
+        {
+            frmContent.Navigate(new SliderDemoPage());
+        }
     }
 }

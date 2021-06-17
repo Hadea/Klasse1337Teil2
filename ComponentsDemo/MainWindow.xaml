@@ -18,6 +18,7 @@
             <Button Content="TextBox Demo" Click="btnTextBox_Click"/>
             <Button Content="TextBlock Demo" Click="btnTextBlock_Click"/>
             <Button Content="Image Demo" Click="btnImage_Click"/>
+            <Button Content="Slider Demo" Click="btnSlider_Click"/>
         </StackPanel>
         <Frame x:Name="frmContent"
                Grid.Column="1"
