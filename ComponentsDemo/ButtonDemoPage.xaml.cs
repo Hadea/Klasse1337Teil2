@@ -20,7 +20,7 @@ namespace ComponentsDemo
     /// </summary>
     public partial class ButtonDemoPage : Page
     {
-        private int mClickCount = 0;
+        private int mClickCount;
 
         public ButtonDemoPage()
         {

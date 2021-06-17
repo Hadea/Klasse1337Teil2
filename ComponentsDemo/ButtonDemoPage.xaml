@@ -9,9 +9,19 @@
       Title="ButtonDemoPage">
 
     <StackPanel>
-        <Button x:Name="btnFirstButton"
-                Content="Button Content" 
-                Width="200" Click="btnFirstButton_Click" MouseEnter="btnFirstButton_MouseEnter" MouseLeave="btnFirstButton_MouseLeave" />
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btnFirstButton"
+                Content="Button Content A" 
+                Width="200"
+                Click="btnFirstButton_Click"
+                MouseEnter="btnFirstButton_MouseEnter"
+                MouseLeave="btnFirstButton_MouseLeave" />
+            <Button x:Name="btnSecondButton"
+                Content="Button Content B"
+                Click="btnFirstButton_Click"
+                MouseEnter="btnFirstButton_MouseEnter"
+                MouseLeave="btnFirstButton_MouseLeave"/>
+        </StackPanel>
         <Label x:Name="lblHoverInfo" Content="HoverLabel"/>
         <Label x:Name="lblClickInfo" Content="ClickLabel"/>
     </StackPanel>

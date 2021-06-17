@@ -15,7 +15,7 @@
             <Button Content="Stackpanel Demo" Click="btnStackpanel_Click"/>
             <Button Content="Grid Demo" Click="btnGrid_Click"/>
             <Button Content="Button Demo" Click="btnButton_Click"/>
-            <Button Content="Nix"/>
+            <Button Content="TextBox" Click="btnTextBox_Click"/>
             <Button Content="Nix"/>
         </StackPanel>
         <Frame x:Name="frmContent"

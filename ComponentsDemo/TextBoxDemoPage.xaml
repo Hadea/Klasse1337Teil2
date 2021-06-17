@@ -1,0 +1,27 @@
+﻿<Page x:Class="ComponentsDemo.TextBoxDemoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComponentsDemo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="TextBoxDemoPage">
+
+    <StackPanel>
+        <TextBox />
+        <TextBox AcceptsReturn="True" AcceptsTab="True"/><!--schaltet Enter und Tab um damit es auch in der Textbox verwendet werden kann-->
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="200" x:Name="tbxInputA" KeyUp="tbxInput_KeyUp"  />
+            <Button Content="X" />
+            <TextBox Width="200" x:Name="tbxInputB" LostFocus="tbxInputB_LostFocus" />
+        </StackPanel>
+        <Label x:Name="lblOutput" Content="nix" />
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Passwort:" />
+            <PasswordBox x:Name="pbxPass" Width="200"/> <!--Versteckt und verschlüsselt die eingabe. Die Zugriffe auf den Inhalt so kurz wie möglich halten damit das Passwort nicht aus dem RAM ausgelesen werden kann-->
+            <Button Content="OK" Click="btnPassword_Click" IsDefault="True" /><!--IsDefault macht diesen Button zum standardbutton für die Entertaste-->
+            <Label x:Name="lblPasswordResult" Content="nix" Width="200" />
+        </StackPanel>
+    </StackPanel>
+</Page>

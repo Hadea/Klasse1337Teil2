@@ -39,5 +39,10 @@ namespace ComponentsDemo
         {
             frmContent.Navigate(new ButtonDemoPage());
         }
+
+        private void btnTextBox_Click(object sender, RoutedEventArgs e)
+        {
+            frmContent.Navigate(new TextBoxDemoPage());
+        }
     }
 }
