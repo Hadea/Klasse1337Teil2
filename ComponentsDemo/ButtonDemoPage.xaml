@@ -1,0 +1,18 @@
+﻿<Page x:Class="ComponentsDemo.ButtonDemoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComponentsDemo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="ButtonDemoPage">
+
+    <StackPanel>
+        <Button x:Name="btnFirstButton"
+                Content="Button Content" 
+                Width="200" Click="btnFirstButton_Click" MouseEnter="btnFirstButton_MouseEnter" MouseLeave="btnFirstButton_MouseLeave" />
+        <Label x:Name="lblHoverInfo" Content="HoverLabel"/>
+        <Label x:Name="lblClickInfo" Content="ClickLabel"/>
+    </StackPanel>
+</Page>

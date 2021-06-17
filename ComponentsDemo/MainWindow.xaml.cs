@@ -34,5 +34,10 @@ namespace ComponentsDemo
         {
             frmContent.Navigate(new GridDemoPage());
         }
+
+        private void btnButton_Click(object sender, RoutedEventArgs e)
+        {
+            frmContent.Navigate(new ButtonDemoPage());
+        }
     }
 }

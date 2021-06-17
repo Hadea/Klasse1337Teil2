@@ -14,7 +14,7 @@
         <StackPanel Grid.Column="0" Grid.Row="0">
             <Button Content="Stackpanel Demo" Click="btnStackpanel_Click"/>
             <Button Content="Grid Demo" Click="btnGrid_Click"/>
-            <Button Content="Nix"/>
+            <Button Content="Button Demo" Click="btnButton_Click"/>
             <Button Content="Nix"/>
             <Button Content="Nix"/>
         </StackPanel>
