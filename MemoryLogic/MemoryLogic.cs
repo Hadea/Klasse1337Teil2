@@ -2,7 +2,7 @@
 
 namespace MemoryLogic
 {
-    public class Class1
+    public class MemoryLogic
     {
     }
 }

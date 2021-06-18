@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MemoryTests
 {
     [TestClass]
-    public class UnitTest1
+    public class MemoryLogicTests
     {
         [TestMethod]
         public void TestMethod1()

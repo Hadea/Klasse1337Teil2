@@ -6,7 +6,25 @@
         xmlns:local="clr-namespace:MemoryUI"
         mc:Ignorable="d"
         Title="Memory" Height="450" Width="800">
-    <Grid>
-        
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="FieldButtonStyle">
+            <Setter Property="Margin" Value="3" />
+            <EventSetter Event="Click" Handler="btnField_Click"/>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <TextBlock x:Name="tblTurns" Text="Züge: " />
+            <TextBlock x:Name="tblPoints" Text="Punkte: " />
+            <TextBlock x:Name="lblTime" Text="Zeit:" />
+            <TextBox x:Name="tbxFieldsHorizontal"/>
+            <TextBox x:Name="tbxFieldsVertical"/>
+            <Button Content="Reset Game" Click="btnReset_Click" />
+        </StackPanel>
+        <Grid x:Name="grdField" Grid.Column="0"/>
     </Grid>
 </Window>
