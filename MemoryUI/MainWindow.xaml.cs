@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Reflection;
+using System.IO;
+
 namespace MemoryUI
 {
     /// <summary>
@@ -65,11 +67,12 @@ namespace MemoryUI
             }
         }
         private int mTurns;
-
+        private List<BitmapImage> bitmaps;
 
         public MainWindow()
         {
             InitializeComponent();
+            loadAllBitmapimages();
         }
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
@@ -79,6 +82,18 @@ namespace MemoryUI
             resetGame(horizontal, vertical);
         }
 
+        private void loadAllBitmapimages()
+        {
+            bitmaps = new List<BitmapImage>();
+            foreach (string fileName in Directory.GetFiles("Images"))
+            {
+                BitmapImage tempBitmap = new(); // neues Bild erstellen
+                tempBitmap.BeginInit();// füllen des Bildes starten
+                tempBitmap.UriSource = new Uri(Directory.GetParent(Environment.CommandLine).FullName + @"\" + fileName);// bildinhalt aus datei laden
+                tempBitmap.EndInit();// füllen des Bildes finalisieren
+                bitmaps.Add(tempBitmap);
+            }
+        }
         private void resetGame(int Columns, int Rows)
         {
             if (Columns * Rows % 2 == 1) throw new ArgumentOutOfRangeException();
@@ -115,15 +130,15 @@ namespace MemoryUI
             // liste der bilder vorbereiten aus welcher ein element jedem button zugewiesen ist
             // die liste enthält bereits ein paar von jedem bild
 
-            List<string> imageListWithPairs = new(Rows * Columns);
+            List<BitmapImage> imageListWithPairs = new();
+            //TODO hier aufgehört
 
-            // eigene assembly heraussuchen
-            string[] loadedImages = new string[20];
+                // eigene assembly heraussuchen
 
-            for (int counter = 0; counter < loadedImages.Length && counter < Rows * Columns / 2; counter++)
+            for (int counter = 0; counter < bitmaps.Count && counter < Rows * Columns / 2; counter++)
             {
-                imageListWithPairs.Add(loadedImages[counter]);
-                imageListWithPairs.Add(loadedImages[counter]);
+                imageListWithPairs.Add(bitmaps[counter]);
+                imageListWithPairs.Add(bitmaps[counter]);
             }
 
             Random rndGen = new();
