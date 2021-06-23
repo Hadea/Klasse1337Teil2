@@ -19,6 +19,7 @@
             <Button Content="TextBlock Demo" Click="btnTextBlock_Click"/>
             <Button Content="Image Demo" Click="btnImage_Click"/>
             <Button Content="Slider Demo" Click="btnSlider_Click"/>
+            <Button Content="ScrollBar Demo" Click="btnScrollBar_Click"/>
         </StackPanel>
         <Frame x:Name="frmContent"
                Grid.Column="1"

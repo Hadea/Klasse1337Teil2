@@ -59,5 +59,10 @@ namespace ComponentsDemo
         {
             frmContent.Navigate(new SliderDemoPage());
         }
+
+        private void btnScrollBar_Click(object sender, RoutedEventArgs e)
+        {
+            frmContent.Navigate(new ScrollBarDemoPage());
+        }
     }
 }
