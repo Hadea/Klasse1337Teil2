@@ -3,15 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MemoryUI"
         mc:Ignorable="d"
         Title="Memory" Height="450" Width="800">
-    <Window.Resources>
-        <Style TargetType="Button" x:Key="FieldButtonStyle">
-            <Setter Property="Margin" Value="3" />
-            <EventSetter Event="Click" Handler="btnField_Click"/>
-        </Style>
-    </Window.Resources>
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100" />
@@ -21,10 +14,18 @@
             <TextBlock x:Name="tblTurns" Text="Züge: " />
             <TextBlock x:Name="tblPoints" Text="Punkte: " />
             <TextBlock x:Name="lblTime" Text="Zeit:" />
+            <!--TODO: add Description for textbox-->
             <TextBox x:Name="tbxFieldsHorizontal"/>
             <TextBox x:Name="tbxFieldsVertical"/>
             <Button Content="Reset Game" Click="btnReset_Click" />
         </StackPanel>
-        <Grid x:Name="grdField" Grid.Column="0"/>
+        <Grid x:Name="grdField" Grid.Column="1">
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="3" />
+                    <EventSetter Event="Click" Handler="btnField_Click"/>
+                </Style>
+            </Grid.Resources>
+        </Grid>
     </Grid>
 </Window>

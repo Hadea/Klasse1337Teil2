@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MemoryLogic\MemoryLogic.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Images\Atron.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

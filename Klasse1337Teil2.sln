@@ -7,13 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstWPFApp", "FirstWPFApp\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComponentsDemo", "ComponentsDemo\ComponentsDemo.csproj", "{1893502F-1E39-493F-A365-FB97BF24E905}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemSettings", "SystemSettings\SystemSettings.csproj", "{40C50B8A-9C6C-4324-A36D-A452732DEAA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SystemSettings", "SystemSettings\SystemSettings.csproj", "{40C50B8A-9C6C-4324-A36D-A452732DEAA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryUI", "MemoryUI\MemoryUI.csproj", "{EC7BB213-825F-481F-BB72-CA1183703B90}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryLogic", "MemoryLogic\MemoryLogic.csproj", "{F09680D0-D4C2-499B-8259-480C5A8A5A70}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryTests", "MemoryTests\MemoryTests.csproj", "{4B99ECA2-0786-45DC-9082-7EA286B0A493}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryUI", "MemoryUI\MemoryUI.csproj", "{EC7BB213-825F-481F-BB72-CA1183703B90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +33,6 @@ Global
 		{EC7BB213-825F-481F-BB72-CA1183703B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC7BB213-825F-481F-BB72-CA1183703B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC7BB213-825F-481F-BB72-CA1183703B90}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F09680D0-D4C2-499B-8259-480C5A8A5A70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F09680D0-D4C2-499B-8259-480C5A8A5A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F09680D0-D4C2-499B-8259-480C5A8A5A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F09680D0-D4C2-499B-8259-480C5A8A5A70}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B99ECA2-0786-45DC-9082-7EA286B0A493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B99ECA2-0786-45DC-9082-7EA286B0A493}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B99ECA2-0786-45DC-9082-7EA286B0A493}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B99ECA2-0786-45DC-9082-7EA286B0A493}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
