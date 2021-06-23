@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
       Title="ButtonDemoPage">
-
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <Button x:Name="btnFirstButton"
@@ -24,5 +23,22 @@
         </StackPanel>
         <Label x:Name="lblHoverInfo" Content="HoverLabel"/>
         <Label x:Name="lblClickInfo" Content="ClickLabel"/>
+        <Canvas>
+            <Canvas.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="50"/>
+                    <Setter Property="Height" Value="50"/>
+                    <Style.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="25" />
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </Canvas.Resources>
+            <Button Canvas.Top="0" Canvas.Left="0"/>
+            <Button Canvas.Top="0" Canvas.Left="64" />
+            <Button Canvas.Top="40" Canvas.Left="32"/>
+            <Button Canvas.Top="40" Canvas.Left="97" />
+        </Canvas>
     </StackPanel>
 </Page>
