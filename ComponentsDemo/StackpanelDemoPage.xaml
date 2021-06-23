@@ -21,15 +21,17 @@
         <Button Content="Stackpanel Demo" HorizontalAlignment="Left"/>
         <Label Content="Stackpanel Demo" Background="Gray" Width="200"/>
         <Label Content="Stackpanel Demo" FontSize="50" />
-        <StackPanel Orientation="Horizontal">
-            <Rectangle Fill="Blue" Height="10" Width="10"/>
-            <Rectangle Fill="Red" Height="10" Width="10"/>
-            <Rectangle Fill="Blue" Height="10" Width="10"/>
-            <Rectangle Fill="Red" Height="10" Width="10"/>
-            <Rectangle Fill="Blue" Height="10" Width="10"/>
-            <Rectangle Fill="Red" Height="10" Width="10"/>
-            <Rectangle Fill="Blue" Height="10" Width="10"/>
-            <Rectangle Fill="Red" Height="10" Width="10"/>
-        </StackPanel>
+        <Border BorderBrush="Green" BorderThickness="1">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Fill="Blue" Height="10" Width="10"/>
+                <Rectangle Fill="Red" Height="10" Width="10"/>
+                <Rectangle Fill="Blue" Height="10" Width="10"/>
+                <Rectangle Fill="Red" Height="10" Width="10"/>
+                <Rectangle Fill="Blue" Height="10" Width="10"/>
+                <Rectangle Fill="Red" Height="10" Width="10"/>
+                <Rectangle Fill="Blue" Height="10" Width="10"/>
+                <Rectangle Fill="Red" Height="10" Width="10"/>
+            </StackPanel>
+        </Border>
     </StackPanel>
 </Page>

@@ -64,5 +64,10 @@ namespace ComponentsDemo
         {
             frmContent.Navigate(new ScrollBarDemoPage());
         }
+
+        private void btnColor_Click(object sender, RoutedEventArgs e)
+        {
+            frmContent.Navigate(new ColorDemoPage());
+        }
     }
 }
