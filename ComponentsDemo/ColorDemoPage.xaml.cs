@@ -45,7 +45,7 @@ namespace ComponentsDemo
             Button s = sender as Button;
             s.Foreground = brushList[mCurrentColorIndex].Item2;
             s.Content = brushList[mCurrentColorIndex].Item1;
-            mCurrentColorIndex = mCurrentColorIndex == brushList.Count ? 0 : mCurrentColorIndex + 1;
+            mCurrentColorIndex = mCurrentColorIndex == brushList.Count - 1 ? 0 : mCurrentColorIndex + 1;
         }
     }
 }

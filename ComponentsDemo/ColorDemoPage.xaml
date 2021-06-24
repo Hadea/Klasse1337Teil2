@@ -17,7 +17,9 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <Button Content="ColorSwitch" Click="btnColorSwitch_Click" />
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Visible">
+        <ScrollViewer Grid.Column="1" 
+                      VerticalScrollBarVisibility="Disabled" 
+                      HorizontalScrollBarVisibility="Visible">
             <StackPanel x:Name="spAllColors" Orientation="Horizontal" >
                 <StackPanel.Resources>
                     <Style TargetType="Rectangle">
