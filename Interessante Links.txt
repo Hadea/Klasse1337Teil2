@@ -1,0 +1,1 @@
+Komprimierte Dateien  https://docs.microsoft.com/de-de/dotnet/api/system.io.compression.zipfile?view=net-5.0
