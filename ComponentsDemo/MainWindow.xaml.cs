@@ -69,5 +69,10 @@ namespace ComponentsDemo
         {
             frmContent.Navigate(new ColorDemoPage());
         }
+
+        private void btnRadioCheck_Click(object sender, RoutedEventArgs e)
+        {
+            frmContent.Navigate(new RadioCheckDemoPage());
+        }
     }
 }

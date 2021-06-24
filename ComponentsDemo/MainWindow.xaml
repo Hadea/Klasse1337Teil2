@@ -21,6 +21,7 @@
             <Button Content="Slider Demo" Click="btnSlider_Click"/>
             <Button Content="ScrollBar Demo" Click="btnScrollBar_Click"/>
             <Button Content="Color Demo" Click="btnColor_Click"/>
+            <Button Content="Radio and CheckBox Demo" Click="btnRadioCheck_Click"/>
         </StackPanel>
         <Frame x:Name="frmContent"
                Grid.Column="1"
