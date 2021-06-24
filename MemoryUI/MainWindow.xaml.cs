@@ -46,13 +46,11 @@ namespace MemoryUI
             }
         }
         private int mTurns;
-        private List<BitmapImage> mBitmapList; // speichert alle Bilder von der Festplatte zwischen
         private int mMaxPoints; // Wird verwendet um das ende einer Partie zu errechnen.
 
         public MainWindow()
         {
             InitializeComponent(); // läd die Inhalte des XAML
-            loadAllBitmapimages(); // läd alle Bilder von der Festplatte
 
             mTimer = new DispatcherTimer(
                 new TimeSpan(0, 0, 0, 0, 100), // alle 100 millisekunden (manchmal später, aber nie früher)
@@ -60,6 +58,7 @@ namespace MemoryUI
                 (_, _) => lblTime.Text = $"Zeit: {(DateTime.Now - mTimeGameStart).TotalSeconds.ToString("N2")}", // der auszuführende befehl
                 Dispatcher.CurrentDispatcher);
             mTimer.Stop(); // hält den Timer an damit das UI nicht aktualisiert wird bevor das Spiel startet
+            lvImageSets.ItemsSource = Directory.GetDirectories("Images");
         }
 
         /// <summary>
@@ -73,25 +72,17 @@ namespace MemoryUI
             // Versuch den Inhalt der Textboxen in Integer zu konvertieren. Sollte es nicht klappen endet die Funktion.
             if (!int.TryParse(tbxFieldsHorizontal.Text, out int horizontal)) return;
             if (!int.TryParse(tbxFieldsVertical.Text, out int vertical)) return;
-
-            resetGame(horizontal, vertical); // startet den Reset-Vorgang anhand der mitgelieferten grösse.
-        }
-
-        /// <summary>
-        /// Läd alle verfügbaren Bilder im Image Ordner in die mBitmapList.
-        /// </summary>
-        private void loadAllBitmapimages()
-        {
-            mBitmapList = new List<BitmapImage>();
-            foreach (string fileName in Directory.GetFiles("Images"))
+            if (lvImageSets.SelectedItems.Count > 0)
             {
-                BitmapImage tempBitmap = new(); // neues Bild erstellen
-                tempBitmap.BeginInit();// füllen des Bildes starten
-                tempBitmap.UriSource = new Uri(Directory.GetParent(Environment.CommandLine).FullName + @"\" + fileName);// bildinhalt aus datei laden
-                tempBitmap.EndInit();// füllen des Bildes finalisieren
-                mBitmapList.Add(tempBitmap);
+                string[] folderList = new string[lvImageSets.SelectedItems.Count];
+                for (int counter = 0; counter < folderList.Length; counter++)
+                    folderList[counter] = lvImageSets.SelectedItems[counter].ToString();
+
+                resetGame(horizontal, vertical, folderList); // startet den Reset-Vorgang anhand der mitgelieferten grösse.
             }
         }
+
+
 
         /// <summary>
         /// Löscht das aktuelle Spielfeld und erstellt es neu anhand der Parameter.
@@ -100,10 +91,37 @@ namespace MemoryUI
         /// <param name="Columns">Anzahl der Spalten des Spielfelds</param>
         /// <param name="Rows">Anzahl der Zeilen des Spielfelds</param>
         /// <exception cref="ArgumentOutOfRangeException"/>
-        private void resetGame(int Columns, int Rows)
+        private void resetGame(int Columns, int Rows, string[] Folders)
         {
-            if (Columns * Rows % 2 == 1) throw new ArgumentOutOfRangeException(); // beendet die Funktion wenn die Anzahl der Felder ungerade ist
+
+            if (Columns * Rows % 2 == 1) throw new ArgumentOutOfRangeException("Columns und Rows muss eine gerade Zahl ergeben"); // beendet die Funktion wenn die Anzahl der Felder ungerade ist
+            if (Folders.Length < 1) throw new ArgumentOutOfRangeException(nameof(Folders), "Ordneranzahl ist zu gering");
+
+            mTimer.Stop();
+            lblTime.Text = "Zeit :";
+            Points = 0;
+            Turns = 0;
             mMaxPoints = Columns * Rows / 2; // speichert die maximal erreichbare punktzahl für den Spiel-Ende-Test
+
+            // alle dateinamen der ausgewählten ordner laden
+            List<string> fileList = new();
+            foreach (string FolderName in Folders)
+                fileList.AddRange(Directory.GetFiles(FolderName));
+
+            // zufällige dateien aus der liste auswählen und als bitmap-paar speichern
+            Random rndGen = new();
+            List<BitmapImage> imageListWithPairs = new();
+            for (int counter = 0; counter < mMaxPoints; counter++)
+            {
+                int randomNumber = rndGen.Next(fileList.Count);
+                BitmapImage newBitmap = new();
+                newBitmap.BeginInit();// füllen des Bildes starten
+                newBitmap.UriSource = new Uri(Directory.GetParent(Environment.CommandLine).FullName + @"\" + fileList[randomNumber]);// bildinhalt aus datei laden
+                newBitmap.EndInit();// füllen des Bildes finalisieren
+                imageListWithPairs.Add(newBitmap);
+                imageListWithPairs.Add(newBitmap);
+                fileList.RemoveAt(randomNumber);
+            }
 
             // spielfeld leeren
             grdField.Children.Clear();
@@ -115,10 +133,7 @@ namespace MemoryUI
             // rows hinzufügen
             for (int counter = 0; counter < Rows; counter++)
             {
-                RowDefinition newRow = new()
-                {
-                    Height = cellSize
-                };
+                RowDefinition newRow = new() { Height = cellSize };
                 grdField.RowDefinitions.Add(newRow);
             }
 
@@ -126,16 +141,6 @@ namespace MemoryUI
             for (int counter = 0; counter < Columns; ++counter)
                 grdField.ColumnDefinitions.Add(new() { Width = cellSize });
 
-            // liste der bilder vorbereiten aus welcher ein element jedem button zugewiesen wird
-            // die liste enthält Bildpaare
-            List<BitmapImage> imageListWithPairs = new();
-            for (int counter = 0; counter < mBitmapList.Count && counter < Rows * Columns / 2; counter++)
-            {
-                imageListWithPairs.Add(mBitmapList[counter]);
-                imageListWithPairs.Add(mBitmapList[counter]);
-            }
-
-            Random rndGen = new();
             // alle zellen durchgehen
             for (int rowCounter = 0; rowCounter < Rows; rowCounter++)
             {
@@ -189,9 +194,16 @@ namespace MemoryUI
             }
             #endregion
 
+            Turns++;
+            // falls zweimal auf den gleichen button geklickt wurde wird dieser direkt zurückgedreht
+            if (sender == mSelectedButtonA)
+            {
+                (mSelectedButtonA.Content as Image).Visibility = Visibility.Collapsed;
+                mSelectedButtonA = null;
+                return;
+            }
             mSelectedButtonB = sender as Button;
             (mSelectedButtonB.Content as Image).Visibility = Visibility.Visible;
-            Turns++;
 
             // zweiter wird aufgedeckt und verglichen
             if ((mSelectedButtonA.Content as Image).Source == (mSelectedButtonB.Content as Image).Source)
@@ -214,7 +226,7 @@ namespace MemoryUI
                         Foreground = Brushes.Red,
                         HorizontalContentAlignment = HorizontalAlignment.Center,
                         VerticalContentAlignment = VerticalAlignment.Center,
-                        Background = Brushes.Yellow
+                        Background = new SolidColorBrush(Color.FromArgb(0xaa,0xaa,0xaa,0xaa))
                     };
                     Grid.SetColumnSpan(lblWin, grdField.ColumnDefinitions.Count);
                     Grid.SetRowSpan(lblWin, grdField.RowDefinitions.Count);
