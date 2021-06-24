@@ -17,6 +17,7 @@
             <RowDefinition Height="25" />
             <RowDefinition Height="25" />
             <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ComboBox SelectionChanged="cmbAlpha_SelectionChanged">
@@ -49,5 +50,7 @@
         <TextBlock x:Name="tblBravoSelection" Grid.Column="1" Grid.Row="1" />
         <ComboBox x:Name="cmbCharly" Grid.Row="2" SelectionChanged="cmbCharly_SelectionChanged" />
         <TextBlock x:Name="tblCharlySelection" Grid.Column="1" Grid.Row="2" />
+        <DatePicker Grid.Row="3" SelectedDateChanged="DatePicker_SelectedDateChanged"  />
+        <TextBlock x:Name="tblDateSelection" Grid.Column="1" Grid.Row="3" />
     </Grid>
 </Page>

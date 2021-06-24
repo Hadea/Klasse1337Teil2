@@ -55,5 +55,11 @@ namespace ComponentsDemo
             // die ComboBox welche über eine Liste gefüllt wurde liefert die ID welche aus der Liste gewählt wurde
             tblCharlySelection.Text = mCharlyStringList[(sender as ComboBox).SelectedIndex];
         }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Das Datum welches ausgewählt wurde kann als string (Text) und auch als DateTime (SelectedDate) entnommen werden
+            tblDateSelection.Text = (sender as DatePicker).SelectedDate.Value.Year.ToString();
+        }
     }
 }
