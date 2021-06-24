@@ -74,5 +74,10 @@ namespace ComponentsDemo
         {
             frmContent.Navigate(new RadioCheckDemoPage());
         }
+
+        private void btnComboBox_Click(object sender, RoutedEventArgs e)
+        {
+            frmContent.Navigate(new ComboBoxDemoPage());
+        }
     }
 }
