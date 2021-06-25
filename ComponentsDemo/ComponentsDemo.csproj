@@ -7,11 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Audio\KlickResource.wav" />
     <None Remove="checker.bmp" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Audio\KlickResource.wav" />
     <Resource Include="Images\checker.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Audio\Klick.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Audio\Kraddy-DubStep.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

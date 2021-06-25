@@ -34,5 +34,6 @@ namespace ComponentsDemo
         private void btnRadioCheck_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new RadioCheckDemoPage());
         private void btnComboBox_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new ComboBoxDemoPage());
         private void btnListView_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new ListViewDemoPage());
+        private void btnAudio_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new AudioDemoPage());
     }
 }

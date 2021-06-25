@@ -74,6 +74,7 @@ namespace MemoryUI
             if (!int.TryParse(tbxFieldsVertical.Text, out int vertical)) return;
             if (lvImageSets.SelectedItems.Count > 0)
             {
+                // übernahme aller selektierten Ordnernamen in ein string-array
                 string[] folderList = new string[lvImageSets.SelectedItems.Count];
                 for (int counter = 0; counter < folderList.Length; counter++)
                     folderList[counter] = lvImageSets.SelectedItems[counter].ToString();
