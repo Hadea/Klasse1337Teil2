@@ -34,7 +34,8 @@
         <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding ElementName=sldAlpha, Path=Value, StringFormat=Gehalt {0:C2}}" />
         <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding ElementName=sldAlpha, Path=Value, StringFormat=Gehalt {0:C2}, ConverterCulture='de-DE'}" />
         <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Source={x:Static sys:DateTime.Now}}" />
-        <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding Source={x:Static sys:DateTime.Now}, ConverterCulture='jp-JP'}" />
+        <!--Konvertiert die angezeigte Systemzeit in vereinfachtes Chinesisch-->
+        <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding Source={x:Static sys:DateTime.Now}, ConverterCulture='zh-Hans'}" />
         <CheckBox Grid.Column="0" Grid.Row="3" Content="Klick mich" IsChecked="{Binding ElementName=tbxConvertedBool, Path=Text, Converter={StaticResource ConverterBoolToString}}"/>
         <TextBox Grid.Column="1" Grid.Row="3" x:Name="tbxConvertedBool" />
         <Rectangle Grid.Row="4" Grid.ColumnSpan="3" Height="25" Fill="CornflowerBlue" Width="{Binding ElementName=sldAlpha, Path=Value, Converter={StaticResource ConverterSliderValueToWidth}, Mode=OneWay}" />
