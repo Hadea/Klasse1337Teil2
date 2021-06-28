@@ -37,5 +37,7 @@ namespace ComponentsDemo
         private void btnAudio_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new AudioDemoPage());
         private void btnBindings_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new BindingsDemoPage());
         private void btnBindingDirection_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new BindingDirectionDemoPage());
+        private void btnFormatting_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new FormattingDemoPage());
+
     }
 }
