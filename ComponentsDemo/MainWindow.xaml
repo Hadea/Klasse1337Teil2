@@ -25,6 +25,8 @@
             <Button Content="ComboBox Demo" Click="btnComboBox_Click"/>
             <Button Content="ListView Demo" Click="btnListView_Click"/>
             <Button Content="Audio Demo" Click="btnAudio_Click"/>
+            <Button Content="Bindings Demo" Click="btnBindings_Click"/>
+            <Button Content="Binding Direction Demo" Click="btnBindingDirection_Click"/>
         </StackPanel>
         <Frame x:Name="frmContent"
                Grid.Column="1"
