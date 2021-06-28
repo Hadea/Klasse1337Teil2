@@ -10,11 +10,16 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50" /> <!--fester pixel wert-->
-            <ColumnDefinition Width="50" /> <!--fester pixel wert-->
-            <ColumnDefinition Width="50" /> <!--fester pixel wert-->
-            <ColumnDefinition Width="Auto" /> <!--so klein wie es der Inhalt erlaubt-->
-            <ColumnDefinition Width="*" /> <!--so gross wie möglich-->
+            <ColumnDefinition Width="50" />
+            <!--fester pixel wert-->
+            <ColumnDefinition Width="50" />
+            <!--fester pixel wert-->
+            <ColumnDefinition Width="50" />
+            <!--fester pixel wert-->
+            <ColumnDefinition Width="Auto" />
+            <!--so klein wie es der Inhalt erlaubt-->
+            <ColumnDefinition Width="*" />
+            <!--so gross wie möglich-->
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -23,15 +28,19 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Label Content="Label1" /> <!-- positioniert an col 0 und row 0 durch standardwert int-->
-        <Label Content="XXXXX" Foreground="Red" /> <!-- positioniert auch an 0 0 und überlagert. Letzter in der Liste wird als letztes gezeichnet und überschreibt vorhergehende visuell -->
-        <Label Content="Label3" Grid.Row="1" Grid.Column="1" /> <!--Positionierungen werden wie bei Arrays ab 0 gezählt-->
+        <Label Content="Label1" />
+        <!-- positioniert an col 0 und row 0 durch standardwert int-->
+        <Label Content="XXXXX" Foreground="Red" />
+        <!-- positioniert auch an 0 0 und überlagert. Letzter in der Liste wird als letztes gezeichnet und überschreibt vorhergehende visuell -->
+        <Label Content="Label3" Grid.Row="1" Grid.Column="1" />
+        <!--Positionierungen werden wie bei Arrays ab 0 gezählt-->
         <Label Content="Verdammt viel text der nicht passt"
                Grid.Row="2"
                Grid.Column="0"
-               Grid.ColumnSpan="3"/> <!-- besagt wieviele Zellen verwendet werden können -->
+               Grid.ColumnSpan="3"/>
+        <!-- besagt wieviele Zellen verwendet werden können -->
         <StackPanel Background="LightGray"
                     Grid.Row="3"
                     Grid.Column="1"
@@ -42,5 +51,16 @@
             <Label Content="Stacked Label"/>
             <Label Content="Stacked Label"/>
         </StackPanel>
+        <Button Content="Create Buttons" Grid.Row="5" Grid.Column="5" Click="Button_Click" />
+        <Grid x:Name="grdAlpha" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
     </Grid>
 </Page>
