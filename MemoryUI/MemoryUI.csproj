@@ -7,6 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Audio\Klick.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Audio\Klick.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Audio\Kraddy-DubStep.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Audio\ShaolinDub-HarpDubz.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Images\Atron.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

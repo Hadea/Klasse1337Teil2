@@ -1,30 +1,49 @@
-﻿<Window x:Class="MemoryUI.MainWindow"
+﻿<Window x:Name="wndMain"
+        x:Class="MemoryUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Memory" Height="450" Width="800">
+    <Window.DataContext>
+        <Binding ElementName="wndMain"/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="PreviewMouseDown">
+                    <SoundPlayerAction Source="/Audio/Klick.wav" />
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
-            <TextBlock x:Name="tblTurns" Text="Züge: " />
-            <TextBlock x:Name="tblPoints" Text="Punkte: " />
-            <TextBlock x:Name="lblTime" Text="Zeit:" />
+            <TextBlock Text="{Binding Turns, StringFormat= Turns {0}}" />
+            <TextBlock Text="{Binding Points, StringFormat= Points {0}}" />
+            <TextBlock Text="{Binding ElapsedTime, StringFormat= Zeit {0:N2}}" />
             <!--TODO: add Description for textbox-->
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tbxFieldsHorizontal" Width="15"/>
-                <Label Content="_Horizontal" Target="{Binding ElementName=tbxFieldsHorizontal}" />
+                <TextBox Text="{Binding HorizontalSize}" Width="15"/>
+                <Label Content="_Horizontal" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tbxFieldsVertical" Width="15" />
-                <Label Content="_Vertical" Target="{Binding ElementName=tbxFieldsVertical}" />
+                <TextBox Text="{Binding VerticalSize}" Width="15" />
+                <Label Content="_Vertical" />
             </StackPanel>
             <ListView x:Name="lvImageSets" Height="80"/>
-            <Button Content="Reset Game" Click="btnReset_Click" />
+            <Button Content="Reset Game" Command="{Binding ResetCommand}" />
+            <StackPanel Orientation="Horizontal">
+                <Button Click="btnAudio_Prev" Content="&lt;&lt;" />
+                <Button Click="btnAudio_Stop" Content="[ ]" />
+                <Button Click="btnAudio_Play" Content="&gt;" />
+                <Button Click="btnAudio_Next" Content="&gt;&gt;" />
+            </StackPanel>
         </StackPanel>
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <Grid x:Name="grdField" >
@@ -32,6 +51,11 @@
                     <Style TargetType="Button">
                         <Setter Property="Margin" Value="3" />
                         <EventSetter Event="Click" Handler="btnField_Click"/>
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <SoundPlayerAction Source="/Audio/Klick.wav" />
+                            </EventTrigger>
+                        </Style.Triggers>
                     </Style>
                 </Grid.Resources>
             </Grid>

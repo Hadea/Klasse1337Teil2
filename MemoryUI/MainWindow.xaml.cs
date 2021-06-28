@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
@@ -12,12 +14,14 @@ namespace MemoryUI
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         private Button mSelectedButtonA; // erste auswahl
         private Button mSelectedButtonB; // zweite auswahl für vergleich
         private DateTime mTimeGameStart; // Wird befüllt wenn das erste Feld umgedreht wird um die Startzeit des Spiels festzuhalten
         private readonly DispatcherTimer mTimer; // Startet zeitbasiert Events. Hier wird er benutzt um die Uhrzeit im UI anzuzeigen.
+        private readonly MediaPlayer mMusic;
 
         /// <summary>
         /// Anzahl der erreichten Paare in diesem Spiel. Änderungen werden mit dem UI syncronisiert.
@@ -27,8 +31,11 @@ namespace MemoryUI
             get => mPoints;
             set
             {
-                mPoints = value; // speichern des neuen Punktewerts
-                tblPoints.Text = "Punkte: " + mPoints; // aktualisieren des UI
+                if (mPoints != value)
+                {
+                    mPoints = value; // speichern des neuen Punktewerts
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Points)));
+                }
             }
         }
         private int mPoints;
@@ -41,12 +48,60 @@ namespace MemoryUI
             get => mTurns;
             set
             {
-                mTurns = value;
-                tblTurns.Text = "Züge: " + mTurns;
+                if (mTurns != value)
+                {
+                    mTurns = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Turns)));
+                }
             }
         }
         private int mTurns;
         private int mMaxPoints; // Wird verwendet um das ende einer Partie zu errechnen.
+
+        public double ElapsedTime
+        {
+            get => _elapsedTime;
+            set
+            {
+                if (_elapsedTime != value)
+                {
+                    _elapsedTime = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ElapsedTime)));
+                }
+            }
+        }
+        private double _elapsedTime;
+
+        public int VerticalSize
+        {
+            get => _verticalSize;
+            set
+            {
+                if (_verticalSize != value)
+                {
+                    _verticalSize = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(VerticalSize)));
+                    (ResetCommand as Command_Reset).RaiseCanExecuteChanged();
+                }
+            }
+        }
+        private int _verticalSize;
+        public int HorizontalSize
+        {
+            get => _horizontalSize;
+            set
+            {
+                if (_horizontalSize != value)
+                {
+                    _horizontalSize = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HorizontalSize)));
+                    (ResetCommand as Command_Reset).RaiseCanExecuteChanged();
+                }
+            }
+        }
+        private int _horizontalSize;
+
+        public ICommand ResetCommand { get; init; }
 
         public MainWindow()
         {
@@ -55,35 +110,14 @@ namespace MemoryUI
             mTimer = new DispatcherTimer(
                 new TimeSpan(0, 0, 0, 0, 100), // alle 100 millisekunden (manchmal später, aber nie früher)
                 DispatcherPriority.Render, // legt die priorität fest mit welcher der DispatcherTimer überprüft ob er starten muss
-                (_, _) => lblTime.Text = $"Zeit: {(DateTime.Now - mTimeGameStart).TotalSeconds.ToString("N2")}", // der auszuführende befehl
+                (_, _) => ElapsedTime = (DateTime.Now - mTimeGameStart).TotalSeconds, // der auszuführende befehl
                 Dispatcher.CurrentDispatcher);
             mTimer.Stop(); // hält den Timer an damit das UI nicht aktualisiert wird bevor das Spiel startet
             lvImageSets.ItemsSource = Directory.GetDirectories("Images");
+            mMusic = new();
+            mMusic.Open(new Uri("Audio/ShaolinDub-HarpDubz.mp3", UriKind.Relative));
+            ResetCommand = new Command_Reset(this);
         }
-
-        /// <summary>
-        /// Eventhandler für den Reset-Button. Dieser Handler löst das löschen und neuerstellen des Spielfelds aus
-        /// anhand der angegebenen Grösse in tbxFieldsHorizontal und tbxFieldsVertical.
-        /// </summary>
-        /// <param name="sender">ignoriert</param>
-        /// <param name="e">ignoriert</param>
-        private void btnReset_Click(object sender, RoutedEventArgs e)
-        {
-            // Versuch den Inhalt der Textboxen in Integer zu konvertieren. Sollte es nicht klappen endet die Funktion.
-            if (!int.TryParse(tbxFieldsHorizontal.Text, out int horizontal)) return;
-            if (!int.TryParse(tbxFieldsVertical.Text, out int vertical)) return;
-            if (lvImageSets.SelectedItems.Count > 0)
-            {
-                // übernahme aller selektierten Ordnernamen in ein string-array
-                string[] folderList = new string[lvImageSets.SelectedItems.Count];
-                for (int counter = 0; counter < folderList.Length; counter++)
-                    folderList[counter] = lvImageSets.SelectedItems[counter].ToString();
-
-                resetGame(horizontal, vertical, folderList); // startet den Reset-Vorgang anhand der mitgelieferten grösse.
-            }
-        }
-
-
 
         /// <summary>
         /// Löscht das aktuelle Spielfeld und erstellt es neu anhand der Parameter.
@@ -92,14 +126,14 @@ namespace MemoryUI
         /// <param name="Columns">Anzahl der Spalten des Spielfelds</param>
         /// <param name="Rows">Anzahl der Zeilen des Spielfelds</param>
         /// <exception cref="ArgumentOutOfRangeException"/>
-        private void resetGame(int Columns, int Rows, string[] Folders)
+        public void resetGame(int Columns, int Rows, string[] Folders)
         {
 
             if (Columns * Rows % 2 == 1) throw new ArgumentOutOfRangeException("Columns und Rows muss eine gerade Zahl ergeben"); // beendet die Funktion wenn die Anzahl der Felder ungerade ist
             if (Folders.Length < 1) throw new ArgumentOutOfRangeException(nameof(Folders), "Ordneranzahl ist zu gering");
 
             mTimer.Stop();
-            lblTime.Text = "Zeit :";
+            ElapsedTime = 0;
             Points = 0;
             Turns = 0;
             mMaxPoints = Columns * Rows / 2; // speichert die maximal erreichbare punktzahl für den Spiel-Ende-Test
@@ -227,13 +261,33 @@ namespace MemoryUI
                         Foreground = Brushes.Red,
                         HorizontalContentAlignment = HorizontalAlignment.Center,
                         VerticalContentAlignment = VerticalAlignment.Center,
-                        Background = new SolidColorBrush(Color.FromArgb(0xaa,0xaa,0xaa,0xaa))
+                        Background = new SolidColorBrush(Color.FromArgb(0xaa, 0xaa, 0xaa, 0xaa))
                     };
                     Grid.SetColumnSpan(lblWin, grdField.ColumnDefinitions.Count);
                     Grid.SetRowSpan(lblWin, grdField.RowDefinitions.Count);
                     grdField.Children.Add(lblWin);
                 }
             }
+        }
+
+        private void btnAudio_Prev(object sender, RoutedEventArgs e)
+        {
+            mMusic.Stop();
+        }
+
+        private void btnAudio_Stop(object sender, RoutedEventArgs e)
+        {
+            mMusic.Stop();
+        }
+
+        private void btnAudio_Play(object sender, RoutedEventArgs e)
+        {
+            mMusic.Play();
+        }
+
+        private void btnAudio_Next(object sender, RoutedEventArgs e)
+        {
+            mMusic.Stop();
         }
     }
 }
