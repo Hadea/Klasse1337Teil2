@@ -1,0 +1,36 @@
+﻿<Page x:Class="ComponentsDemo.FormattingExercisePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComponentsDemo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="FormattingExercisePage">
+    <Page.Resources>
+        <local:ConverterSliderToLine x:Key="ConverterSliderToLine"/>
+    </Page.Resources>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Slider Height="100" Margin="0,0,91,0" x:Name="sldAlpha" Orientation="Vertical" />
+            <Slider Height="100" Margin="0,0,100,0" x:Name="sldBravo" Orientation="Vertical" />
+            <Slider Height="100" Margin="0,0,100,0" x:Name="sldCharly" Orientation="Vertical" />
+            <Slider Height="100" Margin="0,0,100,0" x:Name="sldDelta" Orientation="Vertical" />
+            <Slider Height="100" Margin="0,0,100,0" x:Name="sldEcho" Orientation="Vertical" />
+            <Slider Height="100" Margin="0,0,91,0" x:Name="sldFoxtrott" Orientation="Vertical" />
+        </StackPanel>
+        <Canvas Height="300">
+            <Line X1="000" Y1="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldAlpha, Path=Value}"
+                  X2="122" Y2="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldBravo, Path=Value}" StrokeThickness="4" Stroke="CornflowerBlue" />
+            <Line X1="122" Y1="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldBravo, Path=Value}"
+                  X2="244" Y2="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldCharly, Path=Value}" StrokeThickness="4" Stroke="CornflowerBlue" />
+            <Line X1="244" Y1="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldCharly, Path=Value}"
+                  X2="366" Y2="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldDelta, Path=Value}" StrokeThickness="4" Stroke="CornflowerBlue" />
+            <Line X1="366" Y1="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldDelta, Path=Value}"
+                  X2="488" Y2="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldEcho, Path=Value}" StrokeThickness="4" Stroke="CornflowerBlue" />
+            <Line X1="488" Y1="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldEcho, Path=Value}"
+                  X2="600" Y2="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldFoxtrott, Path=Value}" StrokeThickness="4" Stroke="CornflowerBlue" />
+        </Canvas>
+        <Button Content="Screenshot" Click="Button_Click" />
+    </StackPanel>
+</Page>

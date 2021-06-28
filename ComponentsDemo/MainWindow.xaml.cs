@@ -38,6 +38,7 @@ namespace ComponentsDemo
         private void btnBindings_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new BindingsDemoPage());
         private void btnBindingDirection_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new BindingDirectionDemoPage());
         private void btnFormatting_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new FormattingDemoPage());
+        private void btnFormattingExercise_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new FormattingExercisePage());
 
     }
 }
