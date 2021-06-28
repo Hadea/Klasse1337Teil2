@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 
 namespace ComponentsDemo
@@ -13,7 +9,7 @@ namespace ComponentsDemo
     {
 
         /// <summary>
-        /// Konvertiert den Bool in einen String
+        /// Konvertiert den String in einen Bool
         /// </summary>
         /// <param name="value">Wert der konvertiert werden soll</param>
         /// <param name="targetType"></param>
@@ -26,7 +22,7 @@ namespace ComponentsDemo
         }
 
         /// <summary>
-        /// Konvertiert den String in einen Bool
+        /// Konvertiert den Bool in einen String
         /// </summary>
         /// <param name="value">Wert der konvertiert werden soll</param>
         /// <param name="targetType"></param>
