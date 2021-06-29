@@ -3,11 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ComponentsDemo"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AudioDemoPage">
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
@@ -27,32 +25,38 @@
         </StackPanel>
         <Button Content="Klick mich" Click="btnSoundPlayer_Click" Grid.Row="1" />
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <StackPanel.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
-                    <EventTrigger.Actions>
-                        <!--Die WAV Datei wird hier als Resource markiert und dadurch zugreifbar-->
-                        <SoundPlayerAction Source="\Audio\KlickResource.wav"/>
-                    </EventTrigger.Actions>
-                </EventTrigger>
-            </StackPanel.Triggers>
             <StackPanel.Resources>
+                <!--Der Style trifft alle Buttons innerhalb des Stackpanels da kein Key angegeben wurde-->
                 <Style TargetType="Button">
+                    <Setter Property="Width" Value="25"/>
                     <Style.Triggers>
+                        <!-- PreviewMouseDown löst den Sound beim herunterdrücken mit der Maus aus und
+                        nicht erst beim loslassen der Taste. Die Preview-Variante startet vor allen anderen Events -->
                         <EventTrigger RoutedEvent="PreviewMouseDown">
-                            <!--Die WAV Datei wird hier als Resource markiert und dadurch zugreifbar-->
+                            <!--Startet die WAV datei-->
                             <SoundPlayerAction Source="\Audio\KlickResource.wav"/>
                         </EventTrigger>
                     </Style.Triggers>
                 </Style>
             </StackPanel.Resources>
-            <Button Width="25" />
-            <Button Width="25" />
-            <Button Width="25" />
-            <Button Width="25" />
-            <Button Width="25" />
-            <Button Width="25" />
-            <Button Width="25" />
-            <Button Width="25" />
+            <!--Alternative
+            <StackPanel.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <EventTrigger.Actions>
+                        <SoundPlayerAction Source="\Audio\KlickResource.wav"/>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </StackPanel.Triggers>-->
+            <!-- Die Klick-Sounds werden für alle button durch den Style eingestellt sodass 
+            eine einzelne Zuweisung nicht nötig ist -->
+            <Button/>
+            <Button/>
+            <Button/>
+            <Button/>
+            <Button/>
+            <Button/>
+            <Button/>
+            <Button/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3">
             <Button Content="Exclamation" Click="btnSystemA_Click"/>
@@ -60,6 +64,5 @@
             <Button Content="Question" Click="btnSystemC_Click"/>
             <Button Content="Beep" Click="btnSystemD_Click"/>
         </StackPanel>
-        
     </Grid>
 </Page>
