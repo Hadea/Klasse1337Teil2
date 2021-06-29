@@ -6,20 +6,50 @@
       xmlns:local="clr-namespace:ComponentsDemo"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
-      Title="FormattingExercisePage">
+      Title="FormattingExercisePage"
+      x:Name="thisPage"
+      DataContext="{Binding ElementName=thisPage}">
     <Page.Resources>
+        <!--Inztanzieren des Converters-->
         <local:ConverterSliderToLine x:Key="ConverterSliderToLine"/>
     </Page.Resources>
     <StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Slider Height="100" Margin="0,0,91,0" x:Name="sldAlpha" Orientation="Vertical" />
-            <Slider Height="100" Margin="0,0,100,0" x:Name="sldBravo" Orientation="Vertical" />
+            <Slider Height="100" Margin="0,0,91,0" x:Name="sldAlpha" Orientation="Vertical" Value="{Binding SliderAlpha, Converter={StaticResource ConverterSliderToLine}, Mode=OneWayToSource}" />
+            <Slider Height="100" Margin="0,0,100,0" x:Name="sldBravo" Orientation="Vertical" Value="{Binding SliderBravo, Converter={StaticResource ConverterSliderToLine}, Mode=OneWayToSource}"/>
             <Slider Height="100" Margin="0,0,100,0" x:Name="sldCharly" Orientation="Vertical" />
             <Slider Height="100" Margin="0,0,100,0" x:Name="sldDelta" Orientation="Vertical" />
             <Slider Height="100" Margin="0,0,100,0" x:Name="sldEcho" Orientation="Vertical" />
             <Slider Height="100" Margin="0,0,91,0" x:Name="sldFoxtrott" Orientation="Vertical" />
         </StackPanel>
         <Canvas Height="300">
+            <!-- Erstellung von Resources die nur für dieses Canvas gelten -->
+            <Canvas.Resources>
+                <!-- Ein Style, welche ohne key-angabe alle objekte vom typ Ellipse im Canvas trifft -->
+                <Style TargetType="Ellipse">
+                    <Setter Property="Fill" Value="IndianRed"/>
+                    <Setter Property="Width" Value="4"/>
+                    <Setter Property="Height" Value="4"/>
+                    <Setter Property="RenderTransform">
+                        <!-- Canvas positionsangaben sind für die linke obere ecke
+                        um die Position im Zentrum der Ellipse zu haben wird die
+                        Ellipse um die hälfte ihrer grösse nach oben links verschoben
+                        sodass die Angaben Canvas.Top und Canvas.Left in etwa die mitte
+                        der Ellipse sind-->
+                        <Setter.Value>
+                            <TranslateTransform X="-2" Y="-2"/>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Canvas.Resources>
+            <!-- Diese Linien habenfeste X-Posiitonen und bekommen ihre Y Position vom Slider,
+            da der Slider standardmässig von 0 bis 10 geht wird der Wert durch einen Converter
+            verändert sodass die Line werte von 300 bis 0 erhält-->
+            <!-- Binding
+             Converter: bekommt ein Objekt einer IValueConverter kompatiblen klasse zugewiesen
+                in unserem Fall ist es über eine Statische Ressource in Page.Resources gelöst
+            ElementName: Variablenname des Objektes aus dem Daten erforderlich sind
+            Path: Name des Propertys (vom Objekt aus ElementName) welches die Daten enthält -->
             <Line X1="000" Y1="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldAlpha, Path=Value}"
                   X2="122" Y2="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldBravo, Path=Value}" StrokeThickness="4" Stroke="CornflowerBlue" />
             <Line X1="122" Y1="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldBravo, Path=Value}"
@@ -30,7 +60,17 @@
                   X2="488" Y2="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldEcho, Path=Value}" StrokeThickness="4" Stroke="CornflowerBlue" />
             <Line X1="488" Y1="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldEcho, Path=Value}"
                   X2="600" Y2="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldFoxtrott, Path=Value}" StrokeThickness="4" Stroke="CornflowerBlue" />
+            <!-- Nicht teil der Aufgabe
+            Die Ellipsen haben die Aufgabe die Berührungspunkte der Linien besser aussehen zu lassen
+            Die X-Achse ist fest (Canvas.Left) und die Y achse wird genau wie bei der Line durch den Converter
+            vom Slider gelesen-->
+            <Ellipse Canvas.Left="122" Canvas.Top="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldBravo, Path=Value}"/>
+            <Ellipse Canvas.Left="244" Canvas.Top="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldCharly, Path=Value}"/>
+            <Ellipse Canvas.Left="366" Canvas.Top="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldDelta, Path=Value}"/>
+            <Ellipse Canvas.Left="488" Canvas.Top="{Binding Converter={StaticResource ConverterSliderToLine}, ElementName=sldEcho, Path=Value}"/>
         </Canvas>
-        <Button Content="Screenshot" Click="Button_Click" />
+        <!--Nicht teil der Aufgabe
+        Ein button der einen Screenshot von der Anwendung macht-->
+        <Button Content="Screenshot" Click="btnScreenshot_Click" />
     </StackPanel>
 </Page>
