@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Drawing; // nicht serienmässig dabei, kann aber über das Paket "System.Drawing.Common" hinzugefügt werden
+﻿using System.Drawing; // nicht serienmässig dabei, kann aber über das Paket "System.Drawing.Common" hinzugefügt werden
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,7 +11,7 @@ namespace ComponentsDemo
     {
         public FormattingExercisePage()
         {
-           InitializeComponent();
+            InitializeComponent();
         }
 
         /// <summary>

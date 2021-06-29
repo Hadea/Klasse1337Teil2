@@ -6,17 +6,15 @@
       xmlns:local="clr-namespace:ComponentsDemo"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
-      Title="FormattingExercisePage"
-      x:Name="thisPage"
-      DataContext="{Binding ElementName=thisPage}">
+      Title="FormattingExercisePage">
     <Page.Resources>
-        <!--Inztanzieren des Converters-->
+        <!--Inztanzieren des Converters, er kann duch den Key angesprochen werden-->
         <local:ConverterSliderToLine x:Key="ConverterSliderToLine"/>
     </Page.Resources>
     <StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Slider Height="100" Margin="0,0,91,0" x:Name="sldAlpha" Orientation="Vertical" Value="{Binding SliderAlpha, Converter={StaticResource ConverterSliderToLine}, Mode=OneWayToSource}" />
-            <Slider Height="100" Margin="0,0,100,0" x:Name="sldBravo" Orientation="Vertical" Value="{Binding SliderBravo, Converter={StaticResource ConverterSliderToLine}, Mode=OneWayToSource}"/>
+            <Slider Height="100" Margin="0,0,91,0" x:Name="sldAlpha" Orientation="Vertical"  />
+            <Slider Height="100" Margin="0,0,100,0" x:Name="sldBravo" Orientation="Vertical" />
             <Slider Height="100" Margin="0,0,100,0" x:Name="sldCharly" Orientation="Vertical" />
             <Slider Height="100" Margin="0,0,100,0" x:Name="sldDelta" Orientation="Vertical" />
             <Slider Height="100" Margin="0,0,100,0" x:Name="sldEcho" Orientation="Vertical" />
