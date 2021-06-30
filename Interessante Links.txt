@@ -1,1 +1,5 @@
-Komprimierte Dateien  https://docs.microsoft.com/de-de/dotnet/api/system.io.compression.zipfile?view=net-5.0
+Komprimierte Dateien
+    https://docs.microsoft.com/de-de/dotnet/api/system.io.compression.zipfile?view=net-5.0
+
+ApplicationCommands
+    https://docs.microsoft.com/de-de/dotnet/api/system.windows.input.applicationcommands?view=net-5.0

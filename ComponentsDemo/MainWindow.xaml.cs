@@ -39,6 +39,11 @@ namespace ComponentsDemo
         private void btnBindingDirection_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new BindingDirectionDemoPage());
         private void btnFormatting_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new FormattingDemoPage());
         private void btnFormattingExercise_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new FormattingExercisePage());
-
+        private void btnMenuAndCommand_Click(object sender, RoutedEventArgs e)
+        {
+            //frmContent.Navigate(new MenuAndCommandDemoPage());
+            var window = new MenuAndCommandsDemoWindow();
+            window.Show();
+        }
     }
 }

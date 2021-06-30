@@ -29,6 +29,7 @@
             <Button Content="Binding Direction Demo" Click="btnBindingDirection_Click"/>
             <Button Content="Formatting Demo" Click="btnFormatting_Click"/>
             <Button Content="Formatting Exercise" Click="btnFormattingExercise_Click"/>
+            <Button Content="Menu and Command Demo" Click="btnMenuAndCommand_Click"/>
         </StackPanel>
         <Frame x:Name="frmContent"
                Grid.Column="1"
