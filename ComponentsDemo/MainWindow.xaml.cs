@@ -45,5 +45,8 @@ namespace ComponentsDemo
             var window = new MenuAndCommandsDemoWindow();
             window.Show();
         }
+
+        private void btnDockPanel_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new DockPanelDemoPage());
+
     }
 }

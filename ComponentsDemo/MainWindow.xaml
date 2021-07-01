@@ -30,6 +30,7 @@
             <Button Content="Formatting Demo" Click="btnFormatting_Click"/>
             <Button Content="Formatting Exercise" Click="btnFormattingExercise_Click"/>
             <Button Content="Menu and Command Demo" Click="btnMenuAndCommand_Click"/>
+            <Button Content="DockPanel Demo" Click="btnDockPanel_Click"/>
         </StackPanel>
         <Frame x:Name="frmContent"
                Grid.Column="1"

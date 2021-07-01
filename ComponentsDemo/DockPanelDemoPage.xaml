@@ -1,0 +1,20 @@
+﻿<Page x:Class="ComponentsDemo.DockPanelDemoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="DockPanelDemoPage">
+    <DockPanel>
+        <!--Die Button werden der reihe nach platziert und verbrauchen in der
+        platzierungsrichtung minimalen platz (Auto) und geben den verbleibenden
+        Platz für das nächste element frei-->
+        <Button Content="Links" DockPanel.Dock="Left" />
+        <Button Content="Rechts" DockPanel.Dock="Right" />
+        <Button Content="Oben" DockPanel.Dock="Top" />
+        <Button Content="Unten" DockPanel.Dock="Bottom" />
+        <!--das letzte element bekommt den gesamten verbleibenden platz-->
+        <Button Content="Keine Dock-Angabe" />
+    </DockPanel>
+</Page>
