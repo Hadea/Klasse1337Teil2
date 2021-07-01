@@ -6,20 +6,21 @@
         xmlns:local="clr-namespace:ComponentsDemo"
         mc:Ignorable="d"
         Title="MenuAndCommandsDemoWindow" Height="450" Width="800">
+    <!-- CommandBindings gibt es auf Window und auch auf Page ebene. Hier werden alle Commands für die Anwendung
+    eingetragen. Alle Button/MenuItems/etc bekommen im Property "Command" den gleichen eintrag wie das Command
+    welches sie auslösen sollen.
+    Vorgefertigte Commands gibt es in mehreren Klassen, z.B: ApplicationCommands, MediaCommands, NavigationCommands
+    -->
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.New" Executed="CommandNew_Executed"  />
         <CommandBinding Command="ApplicationCommands.Open" Executed="CommandOpen_Executed" />
         <CommandBinding Command="ApplicationCommands.Close" Executed="CommandClose_Executed"/>
+        <!--Falls es kein passendes Command vorgefertigt gibt kann man auch eigene erstellen.-->
         <CommandBinding Command="local:ExampleCommands.Save" Executed="CommandSave_Executed"/>
     </Window.CommandBindings>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="20"/><!--bleibt leer-->
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <DockPanel>
         <Menu DockPanel.Dock="Top" >
+            <!-- Der Unterstrich vor einem Buchstaben macht diesen zu einem HotKey falls man mit Alt navigieren möchte-->
             <MenuItem Header="_Datei">
                 <MenuItem Header="_Neu" Command="ApplicationCommands.New" />
                 <MenuItem Header="_Neues Fenster öffnen" Command="ApplicationCommands.New" />
@@ -30,6 +31,7 @@
                 <MenuItem Header="Seite einrichten" />
                 <MenuItem Header="Drucken" />
                 <Separator />
+                <!-- Durch das Command werden auch die eingestellten Hotkeys im Menü angezeigt  -->
                 <MenuItem Header="Beenden" Command="ApplicationCommands.Close" />
             </MenuItem>
             <MenuItem Header="Allerlei Möglichkeiten">
@@ -59,9 +61,18 @@
                 <MenuItem Header="Info" />
             </MenuItem>
         </Menu>
-
-        <Button Content="Save" Command="local:ExampleCommands.Save" Grid.Row="2"/>
-        <TextBlock x:Name="tblContent" Grid.Row="3" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <!--bleibt leer-->
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- Der Save Button nutzt das selbst erstellte Command, wichtig ist das es genau gleich
+            geschreiben ist. Ein Click event ist dann nicht mehr nötig. -->
+            <Button Content="Save" Command="local:ExampleCommands.Save" Grid.Row="2"/>
+            <TextBlock x:Name="tblContent" Grid.Row="3" >
             Speichern funktioniert über verschiedene Wege
             <LineBreak/>
             Strg + S
@@ -73,6 +84,7 @@
             Maus benutzen und in Datei auf Speichern clicken
             <LineBreak/>
             Alt, D, S
-        </TextBlock>
-    </Grid>
+            </TextBlock>
+        </Grid>
+    </DockPanel>
 </Window>

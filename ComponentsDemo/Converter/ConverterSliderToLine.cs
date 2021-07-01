@@ -5,7 +5,7 @@ using System.Windows.Data;
 namespace ComponentsDemo
 {
     /// <summary>
-    /// Konvertiert Werte von 0 bis 10 zu 
+    /// Konvertiert Werte von 0 bis 10 zu 300 bis 0
     /// </summary>
     [ValueConversion(typeof(double), typeof(double))]
     class ConverterSliderToLine : IValueConverter
@@ -13,13 +13,13 @@ namespace ComponentsDemo
         // pull
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return 300 - (double)value*30;
+            return 300 - (double)value * 30;
         }
 
-        // push
+        // push (brauchen wir nicht)
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return 300 - (double)value * 30;
+            throw new NotImplementedException();
         }
     }
 }
