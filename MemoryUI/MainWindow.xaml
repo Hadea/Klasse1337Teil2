@@ -4,6 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MemoryUI"
         mc:Ignorable="d"
         Title="Memory" Height="450" Width="800">
     <Window.DataContext>
@@ -18,47 +19,64 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-    <Grid Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
-            <TextBlock Text="{Binding Turns, StringFormat= Turns {0}}" />
-            <TextBlock Text="{Binding Points, StringFormat= Points {0}}" />
-            <TextBlock Text="{Binding ElapsedTime, StringFormat= Zeit {0:N2}}" />
-            <!--TODO: add Description for textbox-->
-            <StackPanel Orientation="Horizontal">
-                <TextBox Text="{Binding HorizontalSize}" Width="15"/>
-                <Label Content="_Horizontal" />
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" Executed="CommandNew_Executed" CanExecute="CommandNew_CanExecute"/>
+        <CommandBinding Command="local:Commands.Help" Executed="CommandHelp_Executed" />
+        <CommandBinding Command="MediaCommands.Play" Executed="CommandPlay_Executed"/>
+        <CommandBinding Command="MediaCommands.NextTrack" Executed="CommandNextTrack_Executed"/>
+        <CommandBinding Command="MediaCommands.PreviousTrack" Executed="CommandPreviousTrack_Executed"/>
+        <CommandBinding Command="MediaCommands.Stop" Executed="CommandStop_Executed"/>
+    </Window.CommandBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Reset" Command="ApplicationCommands.New"/>
+            <MenuItem Header="_Hilfe">
+                <MenuItem Header="_Spielregeln" Command="local:Commands.Help"/>
+                <MenuItem Header="_Info" />
+            </MenuItem>
+        </Menu>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="{Binding Turns, StringFormat= Turns {0}}" />
+                <TextBlock Text="{Binding Points, StringFormat= Points {0}}" />
+                <TextBlock Text="{Binding ElapsedTime, StringFormat= Zeit {0:N2}}" />
+                <!--TODO: add Description for textbox-->
+                <StackPanel Orientation="Horizontal">
+                    <Slider Value="{Binding HorizontalSize}" Width="80" Maximum="5" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="BottomRight"/>
+                    <Label Content="_H" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Slider Value="{Binding VerticalSize}" Width="80" Maximum="5" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="BottomRight" />
+                    <Label Content="_V" />
+                </StackPanel>
+                <ListView x:Name="lvImageSets" Height="80"/>
+                <Button Content="Reset Game" Command="ApplicationCommands.New" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Command="" Content="&lt;&lt;" />
+                    <Button Command="" Content="[ ]" />
+                    <Button Command="" Content="&gt;" />
+                    <Button Command="" Content="&gt;&gt;" />
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Text="{Binding VerticalSize}" Width="15" />
-                <Label Content="_Vertical" />
-            </StackPanel>
-            <ListView x:Name="lvImageSets" Height="80"/>
-            <Button Content="Reset Game" Command="{Binding ResetCommand}" />
-            <StackPanel Orientation="Horizontal">
-                <Button Click="btnAudio_Prev" Content="&lt;&lt;" />
-                <Button Click="btnAudio_Stop" Content="[ ]" />
-                <Button Click="btnAudio_Play" Content="&gt;" />
-                <Button Click="btnAudio_Next" Content="&gt;&gt;" />
-            </StackPanel>
-        </StackPanel>
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Grid x:Name="grdField" >
-                <Grid.Resources>
-                    <Style TargetType="Button">
-                        <Setter Property="Margin" Value="3" />
-                        <EventSetter Event="Click" Handler="btnField_Click"/>
-                        <Style.Triggers>
-                            <EventTrigger RoutedEvent="PreviewMouseDown">
-                                <SoundPlayerAction Source="/Audio/Klick.wav" />
-                            </EventTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Resources>
-            </Grid>
-        </ScrollViewer>
-    </Grid>
+            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <Grid x:Name="grdField" >
+                    <Grid.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="3" />
+                            <EventSetter Event="Click" Handler="btnField_Click"/>
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="PreviewMouseDown">
+                                    <SoundPlayerAction Source="/Audio/Klick.wav" />
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Resources>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </DockPanel>
 </Window>

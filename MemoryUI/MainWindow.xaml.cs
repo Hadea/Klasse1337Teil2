@@ -265,27 +265,51 @@ namespace MemoryUI
                     };
                     Grid.SetColumnSpan(lblWin, grdField.ColumnDefinitions.Count);
                     Grid.SetRowSpan(lblWin, grdField.RowDefinitions.Count);
-                    grdField.Children.Add(lblWin);
+                    _ = grdField.Children.Add(lblWin);
                 }
             }
         }
+               
 
-        private void btnAudio_Prev(object sender, RoutedEventArgs e)
+        private void CommandNew_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            mMusic.Stop();
+            e.CanExecute = lvImageSets is not null &&
+                lvImageSets.SelectedItems.Count > 0 &&
+                HorizontalSize > 0 && 
+                VerticalSize > 0 && 
+                HorizontalSize * VerticalSize % 2 == 0;
         }
 
-        private void btnAudio_Stop(object sender, RoutedEventArgs e)
+        private void CommandNew_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            mMusic.Stop();
+            string[] folderList = new string[lvImageSets.SelectedItems.Count];
+            for (int counter = 0; counter < folderList.Length; counter++)
+                folderList[counter] = lvImageSets.SelectedItems[counter].ToString();
+            resetGame(HorizontalSize, VerticalSize, folderList); // startet den Reset-Vorgang anhand der mitgelieferten grösse.
+
         }
 
-        private void btnAudio_Play(object sender, RoutedEventArgs e)
+        private void CommandHelp_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            _ = MessageBox.Show("Platzhalter für hilfe");
+        }
+
+        private void CommandPlay_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             mMusic.Play();
         }
 
-        private void btnAudio_Next(object sender, RoutedEventArgs e)
+        private void CommandNextTrack_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            mMusic.Stop();
+        }
+
+        private void CommandPreviousTrack_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            mMusic.Stop();
+        }
+
+        private void CommandStop_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             mMusic.Stop();
         }
