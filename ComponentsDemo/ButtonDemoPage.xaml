@@ -3,12 +3,19 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ComponentsDemo"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="600"
+      d:DesignHeight="450"
+      d:DesignWidth="600"
       Title="ButtonDemoPage">
+    <!-- Das Stackpanel sortiert untereinander in grobe bereiche -->
     <StackPanel>
+        <!-- Das obere Stackpanel sortiert die Button nebeneinander -->
         <StackPanel Orientation="Horizontal">
+            <!-- Der Button kann mit dem Property Name zu einer Variable werden welche ihr im C# Code verwenden könnt
+             Content ist der Inhalt des Buttons welcher entweder direkt mit einem String gefüllt wird
+                alternativ aber auch mit Bildern oder beliebigen anderen Controls
+            Der Button stellt dutzende Events zur verfügung bei denen man eigene Funktionen
+            einhängen kann. Die wichtigste ist Click, welche beim Druck auf den Button startet-->
             <Button x:Name="btnFirstButton"
                 Content="Button Content A" 
                 Width="200"
@@ -23,8 +30,10 @@
         </StackPanel>
         <Label x:Name="lblHoverInfo" Content="HoverLabel"/>
         <Label x:Name="lblClickInfo" Content="ClickLabel"/>
+        <!-- Canvas ist für die freie Positionierung der Objekte gedacht -->
         <Canvas>
             <Canvas.Resources>
+                <!-- Ein Style der für alle Buttons in dem Canvas Gilt -->
                 <Style TargetType="Button">
                     <Setter Property="Width" Value="50"/>
                     <Setter Property="Height" Value="50"/>
