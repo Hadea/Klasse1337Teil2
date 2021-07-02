@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Breacher.jpg" />
+    <None Remove="Images\Burst.jpg" />
+    <None Remove="Images\Griffin.jpg" />
+    <None Remove="Images\Imicus.jpg" />
+    <None Remove="Images\Kestrel.jpg" />
+    <None Remove="Images\Merlin.jpg" />
+    <None Remove="Images\Rifter.jpg" />
+    <None Remove="Images\Tormentor.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Breacher.jpg" />
+    <Resource Include="Images\Burst.jpg" />
+    <Resource Include="Images\Griffin.jpg" />
+    <Resource Include="Images\Imicus.jpg" />
+    <Resource Include="Images\Kestrel.jpg" />
+    <Resource Include="Images\Merlin.jpg" />
+    <Resource Include="Images\Rifter.jpg" />
+    <Resource Include="Images\Tormentor.jpg" />
+  </ItemGroup>
+
+</Project>

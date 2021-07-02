@@ -1,0 +1,52 @@
+﻿<Window x:Class="MemoryDakkakEdition.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MemoryDakkakEdition"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="335" Width="300">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Reset" Command="ApplicationCommands.New" />
+        </Menu>
+        <Grid x:Name="grdCardField" Width="280" Height="280">
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <EventSetter Event="Click" Handler="btnField_Click"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Button><Image Source="/Images/Breacher.jpg"/></Button>
+            <Button><Image Source="/Images/Breacher.jpg"/></Button>
+            <Button><Image Source="/Images/Burst.jpg"/></Button>
+            <Button><Image Source="/Images/Burst.jpg"/></Button>
+            <Button><Image Source="/Images/Griffin.jpg"/></Button>
+            <Button><Image Source="/Images/Griffin.jpg"/></Button>
+            <Button><Image Source="/Images/Imicus.jpg"/></Button>
+            <Button><Image Source="/Images/Imicus.jpg"/></Button>
+            <Button><Image Source="/Images/Kestrel.jpg"/></Button>
+            <Button><Image Source="/Images/Kestrel.jpg"/></Button>
+            <Button><Image Source="/Images/Merlin.jpg"/></Button>
+            <Button><Image Source="/Images/Merlin.jpg"/></Button>
+            <Button><Image Source="/Images/Rifter.jpg"/></Button>
+            <Button><Image Source="/Images/Rifter.jpg"/></Button>
+            <Button><Image Source="/Images/Tormentor.jpg"/></Button>
+            <Button><Image Source="/Images/Tormentor.jpg"/></Button>
+        </Grid>
+    </DockPanel>
+</Window>
