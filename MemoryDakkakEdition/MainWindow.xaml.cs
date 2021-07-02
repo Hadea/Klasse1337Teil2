@@ -20,7 +20,7 @@ namespace MemoryDakkakEdition
         /// <summary>
         /// Shuffles all buttons in the grid and collapses the Image inside the button
         /// </summary>
-        void reset()
+        private void reset()
         {
             // Eine liste mit allen möglichen Koordinaten erstellen (0,0) (0,1) (0,2) ...
             List<System.Drawing.Point> unusedCoordinates = new();
@@ -28,7 +28,7 @@ namespace MemoryDakkakEdition
             {
                 for (int counterX = 0; counterX < grdCardField.ColumnDefinitions.Count; counterX++)
                 {
-                    unusedCoordinates.Add(new System.Drawing.Point(counterX, counterY));
+                    unusedCoordinates.Add(new(counterX, counterY));
                 }
             }
 
