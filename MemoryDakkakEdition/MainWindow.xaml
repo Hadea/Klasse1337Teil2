@@ -3,18 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MemoryDakkakEdition"
         mc:Ignorable="d"
-        Title="MainWindow" Height="335" Width="300">
+        Title="MainWindow"
+        Height="335"
+        Width="300">
     <Window.CommandBindings>
+        <!-- Zentrale sammlung aller Kommandos -->
         <CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_Executed"/>
     </Window.CommandBindings>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
+            <!-- Der Resetknopf ist im Menü und bindet sich an das Command -->
             <MenuItem Header="_Reset" Command="ApplicationCommands.New" />
         </Menu>
         <Grid x:Name="grdCardField" Width="280" Height="280">
             <Grid.Resources>
+                <!-- Alle button innerhalb des Grid bekommen ein Click-Event eingestellt-->
                 <Style TargetType="Button">
                     <EventSetter Event="Click" Handler="btnField_Click"/>
                 </Style>
@@ -31,6 +35,8 @@
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
+            <!-- Vorbereitete Button welche beim Spielstart gemischt werden
+            sie müssen immer aufeinanderfolgend in paaren sein-->
             <Button><Image Source="/Images/Breacher.jpg"/></Button>
             <Button><Image Source="/Images/Breacher.jpg"/></Button>
             <Button><Image Source="/Images/Burst.jpg"/></Button>

@@ -17,8 +17,12 @@ namespace MemoryDakkakEdition
             reset();
         }
 
+        /// <summary>
+        /// Shuffles all buttons in the grid and collapses the Image inside the button
+        /// </summary>
         void reset()
         {
+            // Eine liste mit allen möglichen Koordinaten erstellen (0,0) (0,1) (0,2) ...
             List<System.Drawing.Point> unusedCoordinates = new();
             for (int counterY = 0; counterY < grdCardField.RowDefinitions.Count; counterY++)
             {
@@ -29,9 +33,10 @@ namespace MemoryDakkakEdition
             }
 
             Random rndGen = new();
+            // alle button durchgehen und die Position im Grid wechseln
             foreach (Button item in grdCardField.Children)
             {
-                // zufälligen Eintrag auswählen
+                // zufälligen Eintrag aus der liste der unbenutzten koordinaten auswählen
                 int choosenPointID = rndGen.Next(unusedCoordinates.Count);
                 System.Drawing.Point choosenPoint = unusedCoordinates[choosenPointID];
 
@@ -52,6 +57,7 @@ namespace MemoryDakkakEdition
             reset();
         }
 
+        // hilfsvariablen um festzuhalten welche Karten gerade offen gezeigt werden
         private int selectedFirstID;
         private int selectedSecondID;
 
