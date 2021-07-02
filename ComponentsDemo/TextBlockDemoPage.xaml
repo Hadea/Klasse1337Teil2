@@ -25,7 +25,10 @@
             <Underline>Unterstrichen</Underline>
             <Run TextDecorations="Strikethrough">Durchgestrichen</Run>
             <Run TextDecorations="OverLine">Überstrichen</Run>
-            <Hyperlink NavigateUri="https://google.de">Link</Hyperlink>
+            <!-- Der Hyperlink wird ohne weitere angaben direkt im gleichen Frame geöffnet
+             um das zu verhindern und einen extra Browser zu öffnen kann man mit dem Event
+            RequestNavigate einfluss auf die abarbeitung nehmen-->
+            <Hyperlink NavigateUri="https://google.de" RequestNavigate="Hyperlink_Click">Link</Hyperlink>
             <Run Text="Andere Grösse" FontSize="40"/>
             <LineBreak/>
         </TextBlock>
