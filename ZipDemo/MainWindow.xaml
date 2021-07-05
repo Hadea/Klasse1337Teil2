@@ -14,8 +14,15 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" ItemsSource="{Binding ArchiveList}" SelectionMode="Single" SelectedItem="{Binding SelectedArchive}"/>
-        <ListView Grid.Column="1" ItemsSource="{Binding ContentList}" SelectionMode="Single" SelectedItem="{Binding SelectedContent}"/>
-        <Image Grid.Column="2" Source="{Binding SelectedImage}" Height="200" Width="200" Stretch="Uniform" />
+        <ListView Grid.Column="0"
+                  SelectionMode="Single"
+                  ItemsSource="{Binding ArchiveList}"
+                  SelectedItem="{Binding SelectedArchive}"/>
+        <ListView Grid.Column="1"
+                  SelectionMode="Single"
+                  ItemsSource="{Binding ContentList}"
+                  SelectedItem="{Binding SelectedContent}"/>
+        <Image Grid.Column="2" Height="200" Width="200" Stretch="Uniform"
+               Source="{Binding SelectedImage}"/>
     </Grid>
 </Window>
