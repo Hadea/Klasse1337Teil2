@@ -1,0 +1,43 @@
+﻿<Page x:Class="ComponentsDemo.ValidationDemoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComponentsDemo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" 
+      d:DesignWidth="600"
+      Title="ValidationDemoPage"
+      x:Name="pgeValidation"
+      DataContext="{Binding ElementName=pgeValidation}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <!-- ValidatesOnException ist ein sehr einfacher weg, welcher aber zu kleinen Verzögerungen beim Tippen führen
+            kann wenn die Exception geworfen wird.-->
+        <TextBox Text="{Binding AlphaText, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" />
+
+        <!--Ausführliche Schreibweise einer Bindung-->
+        <TextBox Grid.Row="1" >
+            <TextBox.Text>
+                <Binding Path="BravoText" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <!--Hier können mehrere Regeln eingefügt werden welche alle eingehalten werden müssen-->
+                        <!-- Wenn eine Regel zusatzinformationen benötigt kann man sie direkt über Properties mitgeben
+                            VisualStudio erkennt in der Autovervollständigung zusätzliche Properties oder ValidationRules
+                            erst nachdem man sie einmal Kompiliert hat-->
+                        <local:ValidationStringLength MinLength="8" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+    </Grid>
+</Page>
