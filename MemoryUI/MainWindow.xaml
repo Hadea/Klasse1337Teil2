@@ -44,23 +44,43 @@
                 <TextBlock Text="{Binding Turns, StringFormat= Turns {0}}" />
                 <TextBlock Text="{Binding Points, StringFormat= Points {0}}" />
                 <TextBlock Text="{Binding ElapsedTime, StringFormat= Zeit {0:N2}}" />
-                <!--TODO: add Description for textbox-->
-                <StackPanel Orientation="Horizontal">
-                    <Slider Value="{Binding HorizontalSize}" Width="80" Maximum="5" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="BottomRight"/>
-                    <Label Content="_H" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Slider Value="{Binding VerticalSize}" Width="80" Maximum="5" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="BottomRight" />
-                    <Label Content="_V" />
-                </StackPanel>
-                <ListView x:Name="lvImageSets" Height="80"/>
-                <Button Content="Reset Game" Command="ApplicationCommands.New" />
-                <StackPanel Orientation="Horizontal">
-                    <Button Command="" Content="&lt;&lt;" />
-                    <Button Command="" Content="[ ]" />
-                    <Button Command="" Content="&gt;" />
-                    <Button Command="" Content="&gt;&gt;" />
-                </StackPanel>
+                <GroupBox Header="New Game">
+                    <StackPanel>
+                        <TextBox>
+                            <TextBox.Text>
+                                <Binding Path="PlayerName" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:ValidationName RegExRule="^[a-zA-Z][a-zA-Z0-9]{3,7}$" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <StackPanel Orientation="Horizontal">
+                            <Slider Value="{Binding HorizontalSize}" Width="70" Maximum="5" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="BottomRight"/>
+                            <Label Content="_H" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Slider Value="{Binding VerticalSize}" Width="70" Maximum="5" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="BottomRight" />
+                            <Label Content="_V" />
+                        </StackPanel>
+                        <ListView x:Name="lvImageSets" Height="80"/>
+                        <Button Content="Reset Game" Command="ApplicationCommands.New" />
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Audio">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Width" Value="22" />
+                                <Setter Property="Height" Value="22" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button Command="" Content="&lt;&lt;" />
+                        <Button Command="" Content="[ ]" />
+                        <Button Command="" Content="&gt;" />
+                        <Button Command="" Content="&gt;&gt;" />
+                    </StackPanel>
+                </GroupBox>
             </StackPanel>
             <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                 <Grid x:Name="grdField" >

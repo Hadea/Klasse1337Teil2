@@ -22,6 +22,7 @@ namespace MemoryUI
         private DateTime mTimeGameStart; // Wird befüllt wenn das erste Feld umgedreht wird um die Startzeit des Spiels festzuhalten
         private readonly DispatcherTimer mTimer; // Startet zeitbasiert Events. Hier wird er benutzt um die Uhrzeit im UI anzuzeigen.
         private readonly MediaPlayer mMusic;
+        private int mMaxPoints; // Wird verwendet um das ende einer Partie zu errechnen.
 
         /// <summary>
         /// Anzahl der erreichten Paare in diesem Spiel. Änderungen werden mit dem UI syncronisiert.
@@ -56,8 +57,10 @@ namespace MemoryUI
             }
         }
         private int mTurns;
-        private int mMaxPoints; // Wird verwendet um das ende einer Partie zu errechnen.
 
+        /// <summary>
+        /// Verstrichene Zeit in Sekunden seit dem ersten Zug
+        /// </summary>
         public double ElapsedTime
         {
             get => _elapsedTime;
@@ -72,6 +75,9 @@ namespace MemoryUI
         }
         private double _elapsedTime;
 
+        /// <summary>
+        /// Vertikale Anzahl an Karten.
+        /// </summary>
         public int VerticalSize
         {
             get => _verticalSize;
@@ -86,6 +92,10 @@ namespace MemoryUI
             }
         }
         private int _verticalSize;
+
+        /// <summary>
+        /// Horizontale Anzahl an Karten
+        /// </summary>
         public int HorizontalSize
         {
             get => _horizontalSize;
@@ -101,6 +111,14 @@ namespace MemoryUI
         }
         private int _horizontalSize;
 
+        /// <summary>
+        /// Name des aktuellen Spielers
+        /// </summary>
+        public string PlayerName { get; set; }
+
+        /// <summary>
+        /// Kommando für den Reset-Button welcher das Spiel neu erstellen soll.
+        /// </summary>
         public ICommand ResetCommand { get; init; }
 
         public MainWindow()
