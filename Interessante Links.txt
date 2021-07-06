@@ -18,6 +18,7 @@ Installer
 
 Regular Expressions um strings zu überprüfen
     https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions
+    https://blog.robertelder.org/regular-expression-visualizer/
 
 Codeingame (Spielerisch logik in dutzenden Sprachen lernen mit Bewerbungsmöglichkeit)
     https://www.codingame.com/start
