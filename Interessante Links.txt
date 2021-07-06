@@ -15,3 +15,9 @@ NavigationCommands wie Vor und Zück beim Browser, Zoom, Suche
 
 Installer
     https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2017InstallerProjects&ssr=false#review-details
+
+Regular Expressions um strings zu überprüfen
+    https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions
+
+Codeingame (Spielerisch logik in dutzenden Sprachen lernen mit Bewerbungsmöglichkeit)
+    https://www.codingame.com/start
