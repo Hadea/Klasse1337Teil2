@@ -16,7 +16,7 @@
         <StatusBar DockPanel.Dock="Bottom" Height="25">
             <TextBlock Text="Aktueller Status:"/>
             <StatusBarItem>
-                <ProgressBar IsIndeterminate="True" Width="200"/>
+                <ProgressBar IsIndeterminate="True" Width="200" Height="10"/>
             </StatusBarItem>
             <Separator />
             <StatusBarItem>
@@ -36,7 +36,7 @@
                 <RowDefinition Height="25" />
                 <RowDefinition Height="25" />
                 <RowDefinition Height="25" />
-                <RowDefinition Height="25" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Slider x:Name="sldData" />
             <ProgressBar Grid.Row="0" Grid.Column="1" Value="{Binding ElementName=sldData,Path=Value}" Maximum="10" />
