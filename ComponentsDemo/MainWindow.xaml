@@ -12,7 +12,7 @@
             <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0">
-            <Button Content="Stackpanel Demo" Click="btnStackpanel_Click"/>
+            <Button Content="Stack/Wrap Panel Demo" Click="btnStackpanel_Click"/>
             <Button Content="Grid Demo" Click="btnGrid_Click"/>
             <Button Content="Button Demo" Click="btnButton_Click"/>
             <Button Content="TextBox Demo" Click="btnTextBox_Click"/>
@@ -32,6 +32,8 @@
             <Button Content="Menu and Command Demo" Click="btnMenuAndCommand_Click"/>
             <Button Content="DockPanel Demo" Click="btnDockPanel_Click"/>
             <Button Content="Validation Demo" Click="btnValidation_Click"/>
+            <Button Content="Grouping Demo" Click="btnGrouping_Click"/>
+            <Button Content="Progress Demo" Click="btnProgress_Click"/>
         </StackPanel>
         <Frame x:Name="frmContent"
                Grid.Column="1"

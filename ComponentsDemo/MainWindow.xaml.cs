@@ -48,5 +48,7 @@ namespace ComponentsDemo
 
         private void btnDockPanel_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new DockPanelDemoPage());
         private void btnValidation_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new ValidationDemoPage());
+        private void btnGrouping_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new GroupingDemoPage());
+        private void btnProgress_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new ProgressDemoPage());
     }
 }

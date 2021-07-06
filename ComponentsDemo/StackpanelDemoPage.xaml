@@ -33,5 +33,24 @@
                 <Rectangle Fill="Red" Height="10" Width="10"/>
             </StackPanel>
         </Border>
+        <GroupBox Header="WrapPanel Demo-Bereich">
+            <GroupBox.Resources>
+                <Style TargetType="Rectangle" >
+                    <Setter Property="Width" Value="100"/>
+                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Fill" Value="CornflowerBlue"/>
+                </Style>
+            </GroupBox.Resources>
+            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Rectangle />
+                <Rectangle />
+                <Rectangle />
+                <Rectangle />
+                <Rectangle />
+                <Rectangle />
+                <Rectangle />
+            </WrapPanel>
+        </GroupBox>
     </StackPanel>
 </Page>

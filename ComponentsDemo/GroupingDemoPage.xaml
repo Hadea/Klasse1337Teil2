@@ -1,0 +1,66 @@
+﻿<Page x:Class="ComponentsDemo.GroupingDemoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComponentsDemo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="GroupingDemoPage">
+    <StackPanel>
+        <GroupBox Header="Audio Einstellungen">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <CheckBox Content="Echo" />
+                    <CheckBox Content="Foxtrott" />
+                    <CheckBox Content="Gamma" />
+                    <CheckBox Content="Hotel" />
+                </StackPanel>
+                <StackPanel>
+                    <RadioButton Content="Alpha" GroupName="rbgAlpha" />
+                    <RadioButton Content="Bravo" GroupName="rbgAlpha" />
+                    <RadioButton Content="Charly" GroupName="rbgAlpha" />
+                    <RadioButton Content="Delta" GroupName="rbgAlpha" />
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <TabControl>
+            <TabItem Header="Audio">
+                <GroupBox Header="Audio Einstellungen">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <CheckBox Content="Echo" />
+                            <CheckBox Content="Foxtrott" />
+                            <CheckBox Content="Gamma" />
+                            <CheckBox Content="Hotel" />
+                        </StackPanel>
+                        <StackPanel>
+                            <RadioButton Content="Alpha" GroupName="rbgAlpha" />
+                            <RadioButton Content="Bravo" GroupName="rbgAlpha" />
+                            <RadioButton Content="Charly" GroupName="rbgAlpha" />
+                            <RadioButton Content="Delta" GroupName="rbgAlpha" />
+                        </StackPanel>
+                        <Slider Orientation="Vertical" Value="{Binding ElementName=sldZwei, Path=Value}"/>
+                    </StackPanel>
+                </GroupBox>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/checker.bmp"/>
+                        <TextBlock Text="Video"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <GroupBox Header="Video Einstellungen">
+                    <StackPanel>
+                        <RadioButton Content="Alpha" GroupName="rbgAlpha" />
+                        <RadioButton Content="Bravo" GroupName="rbgAlpha" />
+                        <RadioButton Content="Charly" GroupName="rbgAlpha" />
+                        <RadioButton Content="Delta" GroupName="rbgAlpha" />
+                        <Slider x:Name="sldZwei" />
+                    </StackPanel>
+                </GroupBox>
+            </TabItem>
+        </TabControl>
+    </StackPanel>
+</Page>
