@@ -30,6 +30,7 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <GridSplitter Grid.Column="3" Width="5" />
         <Label Content="Label1" />
         <!-- positioniert an col 0 und row 0 durch standardwert int-->
         <Label Content="XXXXX" Foreground="Red" />
