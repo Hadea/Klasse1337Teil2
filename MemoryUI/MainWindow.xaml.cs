@@ -147,7 +147,7 @@ namespace MemoryUI
         public void resetGame(int Columns, int Rows, string[] Folders)
         {
 
-            if (Columns * Rows % 2 == 1) throw new ArgumentOutOfRangeException("Columns und Rows muss eine gerade Zahl ergeben"); // beendet die Funktion wenn die Anzahl der Felder ungerade ist
+            if (Columns * Rows % 2 == 1) throw new ArgumentOutOfRangeException(nameof(Rows), "Columns und Rows muss eine gerade Zahl ergeben"); // beendet die Funktion wenn die Anzahl der Felder ungerade ist
             if (Folders.Length < 1) throw new ArgumentOutOfRangeException(nameof(Folders), "Ordneranzahl ist zu gering");
 
             mTimer.Stop();
@@ -169,7 +169,7 @@ namespace MemoryUI
                 int randomNumber = rndGen.Next(fileList.Count);
                 BitmapImage newBitmap = new();
                 newBitmap.BeginInit();// füllen des Bildes starten
-                newBitmap.UriSource = new Uri(Directory.GetParent(Environment.CommandLine).FullName + @"\" + fileList[randomNumber]);// bildinhalt aus datei laden
+                newBitmap.UriSource = new Uri(Directory.GetParent(Environment.CommandLine).FullName + "//" + fileList[randomNumber]);// bildinhalt aus datei laden
                 newBitmap.EndInit();// füllen des Bildes finalisieren
                 imageListWithPairs.Add(newBitmap);
                 imageListWithPairs.Add(newBitmap);
@@ -287,14 +287,13 @@ namespace MemoryUI
                 }
             }
         }
-               
 
         private void CommandNew_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = lvImageSets is not null &&
                 lvImageSets.SelectedItems.Count > 0 &&
-                HorizontalSize > 0 && 
-                VerticalSize > 0 && 
+                HorizontalSize > 0 &&
+                VerticalSize > 0 &&
                 HorizontalSize * VerticalSize % 2 == 0;
         }
 
@@ -304,7 +303,6 @@ namespace MemoryUI
             for (int counter = 0; counter < folderList.Length; counter++)
                 folderList[counter] = lvImageSets.SelectedItems[counter].ToString();
             resetGame(HorizontalSize, VerticalSize, folderList); // startet den Reset-Vorgang anhand der mitgelieferten grösse.
-
         }
 
         private void CommandHelp_Executed(object sender, ExecutedRoutedEventArgs e)
