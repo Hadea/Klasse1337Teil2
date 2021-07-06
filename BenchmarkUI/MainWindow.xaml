@@ -1,0 +1,23 @@
+﻿<Window x:Class="BenchmarkUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BenchmarkUI"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450"
+        Width="800">
+    <!--
+    1. Sammeln aller Nutzerinteraktion (Buttons / Commands)
+    2. Sammeln aller Auswahlmöglichkeiten (Dropdown / listview)
+    3. Sammeln aller Informationen für den Nutzer (Progress / TextBlock)
+    
+    4. Priorisieren der Kommandos/Ansichten
+    5. Grobes Positionieren der bereiche
+    6. Anhand des Platzes die Komponente auswählen
+    -->
+    <Grid>
+
+    </Grid>
+</Window>
