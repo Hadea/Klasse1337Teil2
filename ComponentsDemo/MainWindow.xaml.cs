@@ -20,37 +20,31 @@ namespace ComponentsDemo
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow() => InitializeComponent();
-
-        private void btnStackpanel_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new StackpanelDemoPage());
-        private void btnGrid_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new GridDemoPage());
-        private void btnButton_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new ButtonDemoPage());
-        private void btnTextBox_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new TextBoxDemoPage());
-        private void btnTextBlock_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new TextBlockDemoPage());
-        private void btnImage_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new ImageDemoPage());
-        private void btnSlider_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new SliderDemoPage());
-        private void btnScrollBar_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new ScrollBarDemoPage());
-        private void btnColor_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new ColorDemoPage());
-        private void btnRadioCheck_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new RadioCheckDemoPage());
-        private void btnComboBox_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new ComboBoxDemoPage());
-        private void btnListView_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new ListViewDemoPage());
-        private void btnAudio_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new AudioDemoPage());
-        private void btnBindings_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new BindingsDemoPage());
-        private void btnBindingDirection_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new BindingDirectionDemoPage());
-        private void btnFormatting_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new FormattingDemoPage());
-        private void btnFormattingExercise_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new FormattingExercisePage());
-        private void btnMenuAndCommand_Click(object sender, RoutedEventArgs e)
+        public MainWindow()
         {
-            //frmContent.Navigate(new MenuAndCommandDemoPage());
-            var window = new MenuAndCommandsDemoWindow();
-            window.Show();
+            InitializeComponent();
+            DataContext = this;
+            NavigateCommand = new DelegateCommand(navigateToPage, canNavigate);
         }
 
-        private void btnDockPanel_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new DockPanelDemoPage());
-        private void btnValidation_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new ValidationDemoPage());
-        private void btnGrouping_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new GroupingDemoPage());
-        private void btnProgress_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new ProgressDemoPage());
+        public ICommand NavigateCommand { get; init; }
 
-        private void btnViewport3D_Click(object sender, RoutedEventArgs e) => frmContent.Navigate(new Viewport3DDemoPage());
+        private bool canNavigate(object pageName)
+        {
+            if (pageName is null) return false;
+            Type choosenClass = Type.GetType("ComponentsDemo." + pageName.ToString());
+            return choosenClass is not null && ( choosenClass.IsSubclassOf(typeof(Page)) || choosenClass.IsSubclassOf(typeof(Window)));
+        }
+        private void navigateToPage(object pageName)
+        {
+            Type choosenClass = Type.GetType("ComponentsDemo." + pageName.ToString());
+            if (choosenClass.IsSubclassOf(typeof(Page)))
+                _ = frmContent.Navigate(Activator.CreateInstance(choosenClass));
+            else if (choosenClass.IsSubclassOf(typeof(Window)))
+            {
+                Window w = (Window)Activator.CreateInstance(choosenClass);
+                w.Show();
+            }
+        }
     }
 }

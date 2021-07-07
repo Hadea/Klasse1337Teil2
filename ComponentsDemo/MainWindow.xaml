@@ -14,29 +14,29 @@
         <ScrollViewer>
 
             <StackPanel Grid.Column="0" Grid.Row="0">
-                <Button Content="Stack/Wrap Panel Demo" Click="btnStackpanel_Click"/>
-                <Button Content="Grid Demo" Click="btnGrid_Click"/>
-                <Button Content="Button Demo" Click="btnButton_Click"/>
-                <Button Content="TextBox Demo" Click="btnTextBox_Click"/>
-                <Button Content="TextBlock Demo" Click="btnTextBlock_Click"/>
-                <Button Content="Image Demo" Click="btnImage_Click"/>
-                <Button Content="Slider Demo" Click="btnSlider_Click"/>
-                <Button Content="ScrollBar Demo" Click="btnScrollBar_Click"/>
-                <Button Content="Color Demo" Click="btnColor_Click"/>
-                <Button Content="Radio and CheckBox Demo" Click="btnRadioCheck_Click"/>
-                <Button Content="ComboBox Demo" Click="btnComboBox_Click"/>
-                <Button Content="ListView Demo" Click="btnListView_Click"/>
-                <Button Content="Audio Demo" Click="btnAudio_Click"/>
-                <Button Content="Bindings Demo" Click="btnBindings_Click"/>
-                <Button Content="Binding Direction Demo" Click="btnBindingDirection_Click"/>
-                <Button Content="Formatting Demo" Click="btnFormatting_Click"/>
-                <Button Content="Formatting Exercise" Click="btnFormattingExercise_Click"/>
-                <Button Content="Menu and Command Demo" Click="btnMenuAndCommand_Click"/>
-                <Button Content="DockPanel Demo" Click="btnDockPanel_Click"/>
-                <Button Content="Validation Demo" Click="btnValidation_Click"/>
-                <Button Content="Grouping Demo" Click="btnGrouping_Click"/>
-                <Button Content="Progress Demo" Click="btnProgress_Click"/>
-                <Button Content="Viewport3D Demo" Click="btnViewport3D_Click"/>
+                <Button Content="Stack/Wrap Panel Demo" Command="{Binding NavigateCommand}" CommandParameter="StackpanelDemoPage"/>
+                <Button Content="Grid Demo" Command="{Binding NavigateCommand}" CommandParameter="GridDemoPage"/>
+                <Button Content="Button Demo" Command="{Binding NavigateCommand}" CommandParameter="ButtonDemoPage"/>
+                <Button Content="TextBox Demo" Command="{Binding NavigateCommand}"  CommandParameter="TextBoxDemoPage"/>
+                <Button Content="TextBlock Demo" Command="{Binding NavigateCommand}" CommandParameter="TextBlockDemoPage"/>
+                <Button Content="Image Demo" Command="{Binding NavigateCommand}" CommandParameter="ImageDemoPage"/>
+                <Button Content="Slider Demo" Command="{Binding NavigateCommand}" CommandParameter="StackpanelDemoPage"/>
+                <Button Content="ScrollBar Demo" Command="{Binding NavigateCommand}"  CommandParameter="ScrollBarDemoPage"/>
+                <Button Content="Color Demo" Command="{Binding NavigateCommand}" CommandParameter="ColorDemoPage"/>
+                <Button Content="Radio and CheckBox Demo" Command="{Binding NavigateCommand}" CommandParameter="RadioCheckDemoPage"/>
+                <Button Content="ComboBox Demo" Command="{Binding NavigateCommand}" CommandParameter="ComboBoxDemoPage"/>
+                <Button Content="ListView Demo" Command="{Binding NavigateCommand}" CommandParameter="ListViewDemoPage"/>
+                <Button Content="Audio Demo" Command="{Binding NavigateCommand}" CommandParameter="AudioDemoPage"/>
+                <Button Content="Bindings Demo" Command="{Binding NavigateCommand}" CommandParameter="BindingsDemoPage"/>
+                <Button Content="Binding Direction Demo" Command="{Binding NavigateCommand}" CommandParameter="BindingDirectionDemoPage"/>
+                <Button Content="Formatting Demo" Command="{Binding NavigateCommand}" CommandParameter="FormattingDemoPage"/>
+                <Button Content="Formatting Exercise" Command="{Binding NavigateCommand}" CommandParameter="FormattingExercisePage"/>
+                <Button Content="Menu and Command Demo" Command="{Binding NavigateCommand}" CommandParameter="MenuAndCommandsDemoWindow"/>
+                <Button Content="DockPanel Demo" Command="{Binding NavigateCommand}" CommandParameter="DockPanelDemoPage"/>
+                <Button Content="Validation Demo" Command="{Binding NavigateCommand}" CommandParameter="ValidationDemoPage"/>
+                <Button Content="Grouping Demo" Command="{Binding NavigateCommand}" CommandParameter="GroupingDemoPage"/>
+                <Button Content="Progress Demo" Command="{Binding NavigateCommand}" CommandParameter="ProgressDemoPage"/>
+                <Button Content="Viewport3D Demo" Command="{Binding NavigateCommand}" CommandParameter="Viewport3DDemoPage"/>
             </StackPanel>
         </ScrollViewer>
         <Frame x:Name="frmContent"
