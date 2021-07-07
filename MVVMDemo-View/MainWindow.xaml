@@ -1,0 +1,35 @@
+﻿<Window x:Class="MVVMDemo_View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMDemo_View"
+        xmlns:vm="clr-namespace:MVVMDemo_ViewModel;assembly=MVVMDemo-ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <!-- Die View nutzt nur Bindungen, diese können innerhalb der View sein oder auch auf das ViewModel zeigen -->
+    <StackPanel>
+        <!-- Bindung an das ViewModel können in kurzform geschrieben werden da durch das setzen
+        des DataContext der ElementName vorausgefüllt ist -->
+        <Slider Value="{Binding AmountSelected, Mode=OneWayToSource}" />
+        <TextBlock Text="{Binding AmountDisplay, Mode=OneWay}" />
+        <TextBox x:Name="tbxNewUserName" />
+        <!-- Beispiel für eine Bindung an das ViewModel und innerhalb der View 
+            Der UI designer hat freie auswahl wie der Nutzer einen neuen Eintrag generiert,
+            das finale ergebnis wird an das Command weitergeleitet -->
+        <Button Content="Add User" Command="{Binding AddUser}"
+                CommandParameter="{Binding ElementName=tbxNewUserName, Path=Text}" />
+        <!-- Dieser Button ändert das Ausgewählte Element in der Liste. Der Zugriff erfolgt direkt über
+        SelectedItem auf den Eintrag, es ist dabei nicht wichtig an welcher position er in der liste ist.
+        Mit SelectedIndex würden wir wissen welche Position der gewählte Eintrag hat.-->
+        <Button Content="Rename" Command="{Binding ModifyUser}"
+                CommandParameter="{Binding ElementName=lvUsers, Path=SelectedItem}" />
+        <ListView x:Name="lvUsers" ItemsSource="{Binding ListOfElements}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackPanel>
+</Window>

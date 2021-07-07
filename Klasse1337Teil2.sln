@@ -22,7 +22,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryDakkakEdition", "Memo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZipDemo", "ZipDemo\ZipDemo.csproj", "{A92C94ED-EFAE-434B-B982-2D469CD38494}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenchmarkUI", "BenchmarkUI\BenchmarkUI.csproj", "{653F53A9-64DF-4C00-BE1C-182F3792B35D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BenchmarkUI", "BenchmarkUI\BenchmarkUI.csproj", "{653F53A9-64DF-4C00-BE1C-182F3792B35D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMDemo-View", "MVVMDemo-View\MVVMDemo-View.csproj", "{B0595A54-5A63-4B33-BC71-8139EADB722C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMDemo-ViewModel", "MVVMDemo-ViewModel\MVVMDemo-ViewModel.csproj", "{6031889F-99B6-4D42-B95C-A3304EC8F1BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +62,14 @@ Global
 		{653F53A9-64DF-4C00-BE1C-182F3792B35D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{653F53A9-64DF-4C00-BE1C-182F3792B35D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{653F53A9-64DF-4C00-BE1C-182F3792B35D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0595A54-5A63-4B33-BC71-8139EADB722C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0595A54-5A63-4B33-BC71-8139EADB722C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0595A54-5A63-4B33-BC71-8139EADB722C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0595A54-5A63-4B33-BC71-8139EADB722C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6031889F-99B6-4D42-B95C-A3304EC8F1BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6031889F-99B6-4D42-B95C-A3304EC8F1BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6031889F-99B6-4D42-B95C-A3304EC8F1BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6031889F-99B6-4D42-B95C-A3304EC8F1BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
