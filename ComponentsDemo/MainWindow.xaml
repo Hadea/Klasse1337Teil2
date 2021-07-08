@@ -39,6 +39,7 @@
                 <Button Content="Viewport3D Demo" Command="{Binding NavigateCommand}" CommandParameter="Viewport3DDemoPage"/>
                 <Button Content="Async und Await Demo" Command="{Binding NavigateCommand}" CommandParameter="AsyncAwaitDemoPage"/>
                 <Button Content="MultiThreading Demo" Command="{Binding NavigateCommand}" CommandParameter="MultiThreadingDemoPage"/>
+                <Button Content="Conditional Styles Demo" Command="{Binding NavigateCommand}" CommandParameter="ConditionalStyleDemoPage"/>
             </StackPanel>
         </ScrollViewer>
         <Frame x:Name="frmContent"

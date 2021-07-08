@@ -1,0 +1,43 @@
+﻿<Page x:Class="ComponentsDemo.ConditionalStyleDemoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComponentsDemo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="ConditionalStyleDemoPage"
+      DataContext="{Binding RelativeSource={RelativeSource self}}">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RedAlert}" Value="true">
+                    <Setter Property="Background" Value="Red"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding RedAlert}" Value="false">
+                    <Setter Property="Background" Value="Green" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
+        <Style TargetType="TextBlock">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RedAlert}" Value="true">
+                    <Setter Property="Background" Value="#fcc"/>
+                    <Setter Property="Text" Value="Links"/>
+                    <Setter Property="TextAlignment" Value="Left"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding RedAlert}" Value="false">
+                    <Setter Property="Background" Value="#cfc" />
+                    <Setter Property="Text" Value="Rechts"/>
+                    <Setter Property="TextAlignment" Value="Right"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
+    </Page.Resources>
+    <DockPanel>
+        <Button DockPanel.Dock="Top" Content="flip" Click="btnFlip_Click"/>
+        <TextBlock />
+    </DockPanel>
+</Page>
