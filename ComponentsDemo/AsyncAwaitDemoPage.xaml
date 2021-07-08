@@ -1,0 +1,19 @@
+﻿<Page x:Class="ComponentsDemo.AsyncAwaitDemoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComponentsDemo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="UnThreadedDemoPage">
+
+    <StackPanel>
+        <!-- Die Progressbar ist dafür da um zu zeigen ob das Bild eingefrohren ist -->
+        <ProgressBar IsIndeterminate="True" Height="20" />
+        <TextBlock Text="Beim Click auf den Button Blockiert das UI"/>
+        <Button Content="Start Blockierend" Click="btnBlocking_Click" />
+        <Button Content="Start Async" Click="btnAsync_Click" />
+        <TextBlock x:Name="tblOutput" Text="noch nix" />
+    </StackPanel>
+</Page>

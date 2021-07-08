@@ -37,6 +37,8 @@
                 <Button Content="Grouping Demo" Command="{Binding NavigateCommand}" CommandParameter="GroupingDemoPage"/>
                 <Button Content="Progress Demo" Command="{Binding NavigateCommand}" CommandParameter="ProgressDemoPage"/>
                 <Button Content="Viewport3D Demo" Command="{Binding NavigateCommand}" CommandParameter="Viewport3DDemoPage"/>
+                <Button Content="Async und Await Demo" Command="{Binding NavigateCommand}" CommandParameter="AsyncAwaitDemoPage"/>
+                <Button Content="MultiThreading Demo" Command="{Binding NavigateCommand}" CommandParameter="MultiThreadingDemoPage"/>
             </StackPanel>
         </ScrollViewer>
         <Frame x:Name="frmContent"
