@@ -22,3 +22,6 @@ Regular Expressions um strings zu überprüfen
 
 Codeingame (Spielerisch logik in dutzenden Sprachen lernen mit Bewerbungsmöglichkeit)
     https://www.codingame.com/start
+
+
+    Python, Django, REST, JSON, SQL, Docker, Linux.
