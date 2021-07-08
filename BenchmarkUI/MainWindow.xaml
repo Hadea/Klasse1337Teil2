@@ -3,21 +3,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BenchmarkUI"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="450"
-        Width="800">
+        Width="800"
+        DataContext="{StaticResource MainViewModel}">
     <!--
     1. Sammeln aller Nutzerinteraktion (Buttons / Commands)
     2. Sammeln aller Auswahlmöglichkeiten (Dropdown / listview)
     3. Sammeln aller Informationen für den Nutzer (Progress / TextBlock)
     
-    4. Priorisieren der Kommandos/Ansichten
-    5. Grobes Positionieren der bereiche
-    6. Anhand des Platzes die Komponente auswählen
+    4. Priorisieren der Kommandos/Ansichten (Was muss auf den Screen, was kann in ein anderes Fenster)
+    5. Grobes Positionieren der Bereiche
+    6. Anhand des Platzes die Komponente auswählen (Gewohnheiten beachten)
     -->
-    <Grid>
-
-    </Grid>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+            <GroupBox Header="Algorithms">
+                <DataGrid ItemsSource="{Binding AlgorithmList}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" IsReadOnly="True" Width="150" Binding="{Binding Name}"/>
+                        <DataGridCheckBoxColumn Header="Recursion" IsReadOnly="True" Width="70" Binding="{Binding Recursion}" />
+                        <DataGridTextColumn Header="Threads" IsReadOnly="True" Width="70" Binding="{Binding Threads}"/>
+                        <DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding Description}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </StackPanel>
+        <ScrollViewer>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <ProgressBar Width="500" Maximum="1000" />
+                    <TextBlock Text="Hier könnte was stehen" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
 </Window>

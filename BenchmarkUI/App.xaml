@@ -1,9 +1,9 @@
 ﻿<Application x:Class="BenchmarkUI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:BenchmarkUI"
+             xmlns:vm="clr-namespace:BenchmarkViewModel;assembly=BenchmarkViewModel"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <vm:BenchmarkViewModel x:Key="MainViewModel"/>
     </Application.Resources>
 </Application>
