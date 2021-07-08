@@ -25,7 +25,7 @@ namespace MVVMDemo_ViewModel
                 (x) => ListOfElements.Add(new() {Name = x.ToString(), Address = "unknown" }), // funktionalität kann als Lambda oder als Funktion weitergegeben werden
                 AddUser_CanExecute );
 
-            ModifyUser = new DelegateCommand((x) => (x as Element_ViewModel).Name = "Geändert");
+            ModifyUser = new DelegateCommand((x) => { if (x is not null) (x as Element_ViewModel).Name = "Geändert"; });
         }
 
         /// <summary>
