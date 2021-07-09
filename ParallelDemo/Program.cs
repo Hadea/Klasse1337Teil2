@@ -4,9 +4,11 @@ using System.Threading.Tasks;
 
 namespace ParallelDemo
 {
-    class Program
+    internal static class Program
     {
-        static void Main()
+        private static List<byte> DauerSchein;
+
+        private static void Main()
         {
             //Demo();
 
@@ -19,7 +21,7 @@ namespace ParallelDemo
              * Ausgabe der Statistik und anzahl der Ziehungen
              */
 
-            List<byte> DauerSchein = new() { 3, 6, 12, 18, 21, 34, 41 };// ist sortiert, binärsuche?!
+            DauerSchein = new() { 3, 6, 12, 18, 21, 34, 41 };// ist sortiert, binärsuche?!
             int[] statistik = new int[8];
 
             // [0] 354891
@@ -30,10 +32,23 @@ namespace ParallelDemo
             // [5]    823
             // [6]     90
             // [7]      0
-            DateTime startZeit = DateTime.Now;
-            while ((DateTime.Now - startZeit).TotalSeconds < 5)
+
+            byte threadcount = 16;
+            List<int[]> statistikListe = new();
+            for (int counter = 0; counter < threadcount; counter++)
             {
-                statistik[WinningNumbers(DauerSchein)]++;
+                statistikListe.Add(new int[8]);
+            }
+
+            _ = Parallel.ForEach(statistikListe, FuenfSekundenLotto);
+
+            for (int count = 0; count < statistik.Length; count++)
+            {
+                for (int inner = 0; inner < statistikListe.Count; inner++)
+                {
+                    int[] statistikListItem = statistikListe[inner];
+                    statistik[count] += statistikListItem[count];
+                }
             }
 
             int sum = 0;
@@ -42,9 +57,18 @@ namespace ParallelDemo
                 Console.WriteLine(item);
                 sum += item;
             }
-            Console.WriteLine(sum);
+            Console.WriteLine(sum.ToString("N0"));
 
-            Console.ReadLine();
+            _ = Console.ReadLine();
+        }
+
+        private static void FuenfSekundenLotto(int[] statistik)
+        {
+            DateTime startZeit = DateTime.Now;
+            while ((DateTime.Now - startZeit).TotalSeconds < 5)
+            {
+                statistik[WinningNumbers(DauerSchein)]++;
+            }
         }
 
         public static int WinningNumbers(List<byte> DauerSchein)
