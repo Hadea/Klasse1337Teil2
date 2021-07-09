@@ -72,6 +72,20 @@ namespace MultithreadCounter
                 // jedes lambda auch einen eigenen wert
                 int taskIDcopy = taskID;
 
+                // Der Task startet eine Action (Delegate ohne Parameter und Rückgabe). Um auf eine Einfache
+                // weise eine passende Funktion zu erzeugen wurde hier ein Lambda ausdruck verwendet.
+                // Dieser ist eine Kurzschreibweise einer echten funktion.
+                //   - Name kann weggelassen werden
+                //   - Parameter kann mit discard _ ignoriert werden wenn nötig
+                //   - Parameter können ohne datentyp geschrieben werden
+                //   - Wenn Parameter vorhanden sind können die runden klammern weggelassen werden
+                //   - Geschweifte klammern sind nur nötig wenn es mehr als einen Befehl im Lambda gibt
+                //      Greeting => Console.WriteLine(Greeting);
+                //  entspricht
+                //      private void printGreeting(string Greeting)
+                //      {
+                //          Console.WriteLine(Greeting);
+                //      }
                 tasks[taskID] = new Task(() =>
                 {
                     int beginn = arrayToSum.Length / tasks.Length * taskIDcopy;
