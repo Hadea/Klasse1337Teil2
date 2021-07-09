@@ -22,6 +22,9 @@
         
         <Style TargetType="TextBlock">
             <Style.Triggers>
+                <!-- Schaut in das gebundene Property und vergleicht mit Value
+                    Wenn die Daten übereinstimmen (casts werden durchgeführt)
+                    werden die Setter angewendet, ansonsten ignoriert-->
                 <DataTrigger Binding="{Binding RedAlert}" Value="true">
                     <Setter Property="Background" Value="#fcc"/>
                     <Setter Property="Text" Value="Links"/>
