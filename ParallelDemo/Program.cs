@@ -17,6 +17,7 @@ namespace ParallelDemo
             LottoEurojackpot lottoEurojackpot = new();
             lottoEurojackpot.Ticket = new() { 12, 18, 21, 34, 41, 3, 6 };
 
+            //TimeTest(lottoEurojackpot);
 
             List<LottoWorkPackage> WorkPackageList = new();
 
@@ -81,14 +82,28 @@ namespace ParallelDemo
                 sum += lottoEurojackpot.Statistik[counter];
             }
             Console.WriteLine("Anzahl der Ziehungen: " + sum.ToString("N0"));
-
             _ = Console.ReadLine();
+        }
+
+        private static void TimeTest(LottoEurojackpot lottoEurojackpot)
+        {
+            int[] Statistik = new int[8];
+            List<byte> Ziehung = new();
+
+            DateTime startZeit = DateTime.Now;
+            for (int counter = 0; counter < 1000000; counter++)
+            {
+                lottoEurojackpot.Prefill(Ziehung);
+                Statistik[lottoEurojackpot.Compare(lottoEurojackpot.Ticket, Ziehung)]++;
+            }
+            DateTime endZeit = DateTime.Now;
+            Console.WriteLine((endZeit - startZeit).TotalSeconds);
         }
 
         private static void Lotto10kSpielen(LottoWorkPackage wp)
         {
             List<byte> DrawnTicket = new(7);
-            
+
             for (int counter = 0; counter < 10_000; counter++)
             {
                 wp.Prefill(DrawnTicket);

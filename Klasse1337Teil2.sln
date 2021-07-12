@@ -34,7 +34,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BenchmarkLogic", "Benchmark
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultithreadCounter", "MultithreadCounter\MultithreadCounter.csproj", "{B1485DD2-1032-4740-A30E-3CDB47C3D764}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelDemo", "ParallelDemo\ParallelDemo.csproj", "{72EA862C-310D-42E6-A1D0-81DD7E746FC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParallelDemo", "ParallelDemo\ParallelDemo.csproj", "{72EA862C-310D-42E6-A1D0-81DD7E746FC4}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "LottoPython", "LottoPython\LottoPython.pyproj", "{7CFA9DCE-107E-4B7B-9BEF-173EFA60FE6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,6 +96,8 @@ Global
 		{72EA862C-310D-42E6-A1D0-81DD7E746FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72EA862C-310D-42E6-A1D0-81DD7E746FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72EA862C-310D-42E6-A1D0-81DD7E746FC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CFA9DCE-107E-4B7B-9BEF-173EFA60FE6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CFA9DCE-107E-4B7B-9BEF-173EFA60FE6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
