@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -52,18 +51,19 @@ namespace ComponentsDemo
             }
         }
 
-
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S125:Sections of code should not be commented out", Justification = "Explanation of Lambda syntax with comment")]
         public MultiThreadingDemoPage()
         {
             InitializeComponent();
             progressReporter = new((x) => ProgressOfSum = x);
             /* entspricht
-                private void namenlos(int x)
-                {
-                    ProgressOfSum = x;
-                }
+             *  private void namenlos(int x)
+             *  {
+             *      ProgressOfSum = x;
+             *  }
              */
         }
+
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
