@@ -6,7 +6,9 @@
       xmlns:local="clr-namespace:ComponentsDemo"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MultiThreadingDemoPage">
+      Title="MultiThreadingDemoPage"
+      x:Name="thisPage"
+      DataContext="{Binding ElementName=thisPage}">
     <StackPanel>
         <ProgressBar IsIndeterminate="true" Height="10" />
         <!-- Progressbar nur um zu zeigen das der UI-Thread nicht hängt-->
@@ -24,6 +26,13 @@
             <Rectangle x:Name="rctBravo" />
             <Rectangle x:Name="rctCharly" />
             <Rectangle x:Name="rctDelta" />
+
         </WrapPanel>
+        <DockPanel>
+            <Button Content="Start" Click="btnStartSumWithProgress_Click" />
+            <Button Content="Stop" Click="btnStopSumWithProgress_Click" />
+            <TextBlock Text="{Binding ResultOfSum}" Width="80"/>
+            <ProgressBar Maximum="1000" Value="{Binding ProgressOfSum}" />
+        </DockPanel>
     </StackPanel>
 </Page>
