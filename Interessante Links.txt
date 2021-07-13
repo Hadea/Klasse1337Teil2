@@ -23,5 +23,12 @@ Regular Expressions um strings zu überprüfen
 Codeingame (Spielerisch logik in dutzenden Sprachen lernen mit Bewerbungsmöglichkeit)
     https://www.codingame.com/start
 
+MVVM Wiki seite welche auch links zu allen anderen Entwurfsmustern enthält
+    https://de.wikipedia.org/wiki/Model_View_ViewModel
+
+Design Patterns mit beispielen und erklärungen
+    https://refactoring.guru/design-patterns/csharp
+
+
 
     Python, Django, REST, JSON, SQL, Docker, Linux.
