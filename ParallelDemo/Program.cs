@@ -17,8 +17,8 @@ namespace ParallelDemo
             LottoEurojackpot lottoEurojackpot = new();
             lottoEurojackpot.Ticket = new() { 12, 18, 21, 34, 41, 3, 6 };
 
-            //TimeTest(lottoEurojackpot);
-
+            TimeTest(lottoEurojackpot);
+            /*
             List<LottoWorkPackage> WorkPackageList = new();
 
             int desiredTries = 100_000_000;
@@ -42,11 +42,11 @@ namespace ParallelDemo
                 wp.Statistik = new int[8];
                 WorkPackageList.Add(wp);
             }
-
+            */
             //LottoWorkPackage wp = new() { Ticket = lottoEurojackpot.Ticket, Compare = lottoEurojackpot.Compare, Prefill = lottoEurojackpot.Prefill, Statistik = new int[8] };
             //Lotto10kSpielen(wp);
-
-             _ = Parallel.ForEach(WorkPackageList, Lotto10kSpielen);
+            /*
+             _ = Parallel.ForEach(WorkPackageList, LottoWorkPackage.Lotto10kSpielen);
 
             for (int counter = 0; counter < desiredTries / 10000; counter++)
             {
@@ -81,7 +81,7 @@ namespace ParallelDemo
                 Console.WriteLine($" {counter} Richtige: {lottoEurojackpot.Statistik[counter]:N0}");
                 sum += lottoEurojackpot.Statistik[counter];
             }
-            Console.WriteLine("Anzahl der Ziehungen: " + sum.ToString("N0"));
+            Console.WriteLine("Anzahl der Ziehungen: " + sum.ToString("N0"));*/
             _ = Console.ReadLine();
         }
 
@@ -91,7 +91,7 @@ namespace ParallelDemo
             List<byte> Ziehung = new();
 
             DateTime startZeit = DateTime.Now;
-            for (int counter = 0; counter < 1000000; counter++)
+            for (int counter = 0; counter < 1_000_000; counter++)
             {
                 lottoEurojackpot.Prefill(Ziehung);
                 Statistik[lottoEurojackpot.Compare(lottoEurojackpot.Ticket, Ziehung)]++;
@@ -100,18 +100,6 @@ namespace ParallelDemo
             Console.WriteLine((endZeit - startZeit).TotalSeconds);
         }
 
-        private static void Lotto10kSpielen(LottoWorkPackage wp)
-        {
-            List<byte> DrawnTicket = new(7);
-
-            for (int counter = 0; counter < 10_000; counter++)
-            {
-                wp.Prefill(DrawnTicket);
-                int result = wp.Compare(wp.Ticket, DrawnTicket);
-                //Console.Write(result);
-                wp.Statistik[result]++;
-            }
-        }
         private static void Demo()
         {
             Console.WriteLine("Parallel Invoke");
@@ -147,14 +135,6 @@ namespace ParallelDemo
         {
             Console.Write($"{IntToPrint,3}");
         }
-    }
-
-    struct LottoWorkPackage
-    {
-        public List<byte> Ticket;
-        public int[] Statistik;
-        public Action<List<byte>> Prefill;
-        public Func<List<byte>, List<byte>, int> Compare;
     }
 
 }

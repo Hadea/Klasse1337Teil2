@@ -11,6 +11,11 @@ namespace ParallelDemo
         }
         public override int Compare(List<byte> TicketA, List<byte> TicketB)
         {
+            if (TicketA is null) throw new ArgumentNullException(nameof(TicketA));
+            if (TicketA.Count != 7) throw new ArgumentException("Ungültige anzahl an Elementen", nameof(TicketA));
+            if (TicketB is null) throw new ArgumentNullException(nameof(TicketB));
+            if (TicketB.Count != 7) throw new ArgumentException("Ungültige anzahl an Elementen", nameof(TicketB));
+
             int rightNumberCount = 0;
 
             for (int i = 0; i < 6; i++)
