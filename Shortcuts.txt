@@ -1,0 +1,34 @@
+
+Alt+Enter   Autogenerierung / Autokorrektur von code
+Strg+.      Autogenerierung / Autokorrektur von code
+
+Alt+Shift   Rechteckiges markieren und auch mehrzeiliges einfügen und schreiben
+
+Strg+K+D    Dokument formatieren
+
+Strg+K+C    Markierte Zeilen auskommentieren
+Strg+K+U    Markierte Zeilen Kommentarzeichen entfernen
+Strg+K+S    Markierte Zeilen mit Code umschliessen
+
+Alt+Pfeil   Einzelne oder mehre Zeilen verschieben
+
+Strg+R+R    Umbenennen von Elementen, achtet dabei auf logische zusamenhänge und
+            passt ggfs auch Dateinamen an
+Strg+H      Normales Suchen und ersetzen
+Strg+F      Suchen
+
+Strg+C      Zeile in Zwischenablage kopieren
+Strg+X      Zeile in Zwischenablage kopieren und entfernen
+Strg+V      Inhalt der Zwischenablage einfügen
+
+
+Strg+Space  Autovervollständigungs-Liste aufklappen
+Tab+Tab     Snippet aus der Autovervollständigung einfügen
+
+Strg+D      Duplizieren des Ausgewählten bereichs
+
+F1          Hilfe zu dem Objekt unter dem Cursor
+F5          Starten des eingestellten Programms
+F9          Haltepunkt setzen und entfernen
+F10         Nächster Schritt in der Anwendung, inhalt von Funktionen wird nicht einzeln durchgegangen
+F11         Nächster Schritt, sollte der eine funktion sein wird auch diese schritt für schritt durchgegangen

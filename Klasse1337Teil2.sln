@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		Interessante Links.txt = Interessante Links.txt
 		Readme.md = Readme.md
+		Shortcuts.txt = Shortcuts.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryDakkakEdition", "MemoryDakkakEdition\MemoryDakkakEdition.csproj", "{8221FDDF-4128-4583-9304-D542A0DF5D3B}"
