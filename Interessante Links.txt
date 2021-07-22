@@ -29,6 +29,13 @@ MVVM Wiki seite welche auch links zu allen anderen Entwurfsmustern enthält
 Design Patterns mit beispielen und erklärungen
     https://refactoring.guru/design-patterns/csharp
 
+Hansoft (Projektplanung)
+    https://www.perforce.com/products/hansoft
 
+Jira (Projektplanung)
+    https://www.atlassian.com/de/software/jira
+
+Perforce (Quellcodeverwaltung)
+    https://www.perforce.com/
 
     Python, Django, REST, JSON, SQL, Docker, Linux.
