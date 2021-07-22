@@ -39,6 +39,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParallelDemo", "ParallelDem
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "LottoPython", "LottoPython\LottoPython.pyproj", "{7CFA9DCE-107E-4B7B-9BEF-173EFA60FE6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPDemoClient", "TCPDemoClient\TCPDemoClient.csproj", "{755AA76C-138F-40DF-B945-5962DB23ACDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPDemoServer", "TCPDemoServer\TCPDemoServer.csproj", "{7E53ECC3-6B7D-4343-B9B1-D7DE26934B1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +103,14 @@ Global
 		{72EA862C-310D-42E6-A1D0-81DD7E746FC4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CFA9DCE-107E-4B7B-9BEF-173EFA60FE6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7CFA9DCE-107E-4B7B-9BEF-173EFA60FE6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{755AA76C-138F-40DF-B945-5962DB23ACDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{755AA76C-138F-40DF-B945-5962DB23ACDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{755AA76C-138F-40DF-B945-5962DB23ACDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{755AA76C-138F-40DF-B945-5962DB23ACDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E53ECC3-6B7D-4343-B9B1-D7DE26934B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E53ECC3-6B7D-4343-B9B1-D7DE26934B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E53ECC3-6B7D-4343-B9B1-D7DE26934B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E53ECC3-6B7D-4343-B9B1-D7DE26934B1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
