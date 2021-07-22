@@ -21,6 +21,8 @@ Strg+C      Zeile in Zwischenablage kopieren
 Strg+X      Zeile in Zwischenablage kopieren und entfernen
 Strg+V      Inhalt der Zwischenablage einfügen
 
+Strg+Tab    Übersicht über alle offenen Dokumente und Fenster. Strg gedrückt halten, mit pfeiltasten kann
+            navigiert werden. Beim Strg loslassen wird das markierte geöffnet.
 
 Strg+Space  Autovervollständigungs-Liste aufklappen
 Tab+Tab     Snippet aus der Autovervollständigung einfügen
