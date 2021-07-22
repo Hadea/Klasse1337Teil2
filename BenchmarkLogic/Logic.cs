@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace BenchmarkLogic
 {
-    public class Logic
+    public static class Logic
     {
         public static void ArrayRandomFill(int[] ArrayToFill)
         {
@@ -32,6 +32,7 @@ namespace BenchmarkLogic
                 }// ende zählen
             }// ende zählen 
         }
+
         public static void SelectionSortOptimized(int[] ArrayToSort)
         {
             //TODO: Äusserer zähler kann bereits ein element früher aufhören
