@@ -14,12 +14,7 @@ namespace ComponentsDemo
     /// </summary>
     public partial class MultiThreadingDemoPage : Page, INotifyPropertyChanged
     {
-
-        // Fields für die Threads, falls wir später noch zugriff darauf brauchen. z.B. um nachzuschauen ob er fertig ist
-        private Task threadA;
-        private Task threadB;
-        private Task threadC;
-        private Task threadD;
+ 
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -72,21 +67,24 @@ namespace ComponentsDemo
             foreach (Rectangle item in wrpRects.Children)
                 item.Fill = Brushes.OrangeRed;
 
+            Task[] thingsToDo = new Task[4];
+
             // Tasks werden vorbereitet, aber nicht gestartet.
-            threadA = new Task(() => timedRecolor(rctAlpha));
-            threadB = new Task(() => timedRecolor(rctBravo));
-            threadC = new Task(() => timedRecolor(rctCharly));
-            threadD = new Task(() => timedRecolor(rctDelta));
+            thingsToDo[0] = new Task(() => timedRecolor(rctAlpha));
+            thingsToDo[1] = new Task(() => timedRecolor(rctBravo));
+            thingsToDo[2] = new Task(() => timedRecolor(rctCharly));
+            thingsToDo[3] = new Task(() => timedRecolor(rctDelta));
 
             // Alle Tasks werden gestartet
-            threadA.Start();
-            threadB.Start();
-            threadC.Start();
-            threadD.Start();
+
+            foreach (var item in thingsToDo)
+            {
+                item.Start();
+            }
 
             // WhenAll blockiert bis alle Threads fertig sind. Durch das await wird diese Methode geparkt
             // und macht weiter wenn das WhenAll fertig ist
-            await Task.WhenAll(threadA, threadB, threadC, threadD);
+            await Task.WhenAll(thingsToDo);
             (sender as Button).IsEnabled = true;
         }
 
