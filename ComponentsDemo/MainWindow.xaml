@@ -40,6 +40,7 @@
                 <Button Content="Async und Await Demo" Command="{Binding NavigateCommand}" CommandParameter="AsyncAwaitDemoPage"/>
                 <Button Content="MultiThreading Demo" Command="{Binding NavigateCommand}" CommandParameter="MultiThreadingDemoPage"/>
                 <Button Content="Conditional Styles Demo" Command="{Binding NavigateCommand}" CommandParameter="ConditionalStyleDemoPage"/>
+                <Button Content="DataGrid Demo" Command="{Binding NavigateCommand}" CommandParameter="DataGridDemoPage"/>
             </StackPanel>
         </ScrollViewer>
         <Frame x:Name="frmContent"
