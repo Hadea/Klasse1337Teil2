@@ -18,6 +18,7 @@
             <RowDefinition Height="25" />
             <RowDefinition Height="25" />
             <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ComboBox SelectionChanged="cmbAlpha_SelectionChanged">
@@ -52,5 +53,18 @@
         <TextBlock x:Name="tblCharlySelection" Grid.Column="1" Grid.Row="2" />
         <DatePicker Grid.Row="3" SelectedDateChanged="DatePicker_SelectedDateChanged"  />
         <TextBlock x:Name="tblDateSelection" Grid.Column="1" Grid.Row="3" />
+        <!-- IsEditable hilft bei dem heraussuchen eines bestimmten wertes in der ComboBox wenn TextSearch verwendet wird
+            Dadurch kann man Inhalten Strings verpassen nach denen gesucht werden kann
+            Diese Strings werden dann auch angezeigt.
+            In diesem Beispiel wird das Property Name dafür verwendet, man kann aber auch den Items
+            selbst einen String verpassen : TextSearch.Text -->
+        <ComboBox IsEditable="True" TextSearch.TextPath="Name" Grid.Row="4">
+            <Image Name="Alpha"  Source="/Images/checker.bmp" />
+            <Image Name="Bravo"  Source="/Images/checker.bmp" />
+            <Image Name="Charly" Source="/Images/checker.bmp" />
+            <Image Name="Alpen"  Source="/Images/checker.bmp" />
+            <Image Name="Delta"  Source="/Images/checker.bmp" />
+            <Image Name="Alpina" Source="/Images/checker.bmp" />
+        </ComboBox>
     </Grid>
 </Page>
