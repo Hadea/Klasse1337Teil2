@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ComponentsDemo
 {
@@ -28,12 +18,7 @@ namespace ComponentsDemo
         public DataGridDemoPage()
         {
             InitializeComponent();
-            ContentList.Add(new Content() {Name = "Hans", IsReady = true });
-            ContentList.Add(new Content() {Name = "Jaqueline", IsReady = true });
-            ContentList.Add(new Content() {Name = "Peter", IsReady = true });
-            ContentList.Add(new Content() {Name = "Karen", IsReady = false });
-            ContentList.Add(new Content() {Name = "Kevin", IsReady = false });
-            ContentList.Add(new Content() {Name = "Petra", IsReady = true });
+            ComponentsDemo.Content.FillWithDummyData(ContentList);
 
             // erstellt eine Ansicht für eine Collection mit der wir rein visuell die Inhalte manipulieren und filtern können
             // die originaldaten werden dabei nicht angetastet
@@ -43,7 +28,12 @@ namespace ComponentsDemo
             // sobald der Befehl Refresh gestartet wurde.
             // Dieser filter nutzt den Inhalt eines Properties (durch TextBox gebunden und befüllt) mit dem es vergleicht
             // und bool zurückgibt. Wenn der bool true ist wird das Element angezeigt, andernfalls nicht.
-            contentListView.Filter = new Predicate<object>(x => (x as Content).Name.Contains(FilterText));
+            contentListView.Filter = new Predicate<object>(
+                (ItemToFilter) =>
+                FilterText != "" && (ItemToFilter as Content).Name.Contains(FilterText)
+                );
+
+            DataContext = this;
         }
 
         private void tbxSearch_KeyUp(object sender, KeyEventArgs e)
@@ -54,7 +44,21 @@ namespace ComponentsDemo
 
     public class Content
     {
+        /// <summary>
+        /// Fills an <see cref="ObservableCollection{Content}"/> with some dummy content.
+        /// </summary>
+        /// <param name="ListToFill">The Collection to be filled</param>
+        public static void FillWithDummyData(ObservableCollection<Content> ListToFill)
+        {
+            ListToFill.Add(new Content() { Name = "Hans", IsReady = true });
+            ListToFill.Add(new Content() { Name = "Jaqueline", IsReady = true });
+            ListToFill.Add(new Content() { Name = "Peter", IsReady = true });
+            ListToFill.Add(new Content() { Name = "Karen", IsReady = false });
+            ListToFill.Add(new Content() { Name = "Kevin", IsReady = false });
+            ListToFill.Add(new Content() { Name = "Petra", IsReady = true });
+        }
         public string Name { get; set; }
         public bool IsReady { get; set; }
+
     }
 }
